@@ -12,7 +12,7 @@ export const InputGroup = styled.div`
 `;
 
 export const Label = styled.label`
-  color:${({$color}) => { return $color === 'danger' ? '#BE2E2E' : '#081c15'}};
+  color:${({$color}) => { return $color === 'danger' ? 'var(--message-error)' : 'var(--green-darker)'}};
   font-family: Inter;
   font-size: 24px;
   font-style: normal;
@@ -26,21 +26,21 @@ export const Input = styled.input`
   flex-shrink: 0;
   border-radius: 4px;
   border:1px solid;
-  border-color: ${({$color}) => { return $color === 'danger' ? '#BE2E2E' : '#081c15'}};
+  border-color: ${({$color}) => { return $color === 'danger' ?'var(--message-error)' : 'var(--green-darker)'}};
   background: transparent;
   margin-bottom: 0 auto;
   position: relative;
   &:focus,
   &:active,
   &hover {
-    background-color: #f8f9fa;
-    border: 1px solid #212529;
+    background-color: var(--gray-lighter);
+    border: 1px solid var(--gray-darker);
     font-size: 16px;
     padding-left: 5px;
   }
 
   &::placeholder {
-    color: #212529;
+    color: var(--gray-darker);
     padding-left: 5px;
     font-size: 14px;
   }
@@ -55,6 +55,6 @@ display: flex;
 justify-content: center;
 align-items: center;
 border: none;
-color:${({$color}) => { return $color === 'danger' ? '#BE2E2E' : '#081c15'}};;
+color:${({$color}) => { return $color === 'danger' ? 'var(--message-error)' : 'var(--green-darker)'}};;
   background: transparent;
 `;
