@@ -1,0 +1,20 @@
+:root {
+    --green-darker: #081C15;
+    --green-dark: #40916C;
+    --green-light: #95D5B2;
+    --green-lighter: #D8F3DC;
+    
+    --gray-darker: #212529;
+    --gray-dark: #495057;
+    --gray-light: #DEE2E6;
+    --gray-lighter: #F8F9FA;
+    
+     --text-black: #1d1f20;
+    --text-white: #ffffff;
+
+  
+    --message-success: #358423;
+    --message-error: #FA1212;
+  }
+  
+  

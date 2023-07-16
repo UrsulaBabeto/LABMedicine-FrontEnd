@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@200&display=swap');
+:root {
+  --fnt-font-size: 18px;
+  --fnt-line-height: 2em;
+  --fnt-font-family: 'Forum', cursive;
+  --fnt-font-secondary: 'Inter', sans-serif;
+
+  --fnt-font-heading-1: 2.488rem;
+  --fnt-font-heading-2: 2.07rem;
+  --fnt-font-heading-3: 1.728rem;
+  --fnt-font-heading-4: 1.44rem;
+  --fnt-font-heading-5: 1.2rem;
+  --fnt-font-paragraph: 1rem;
+  --fnt-font-small: 0.833rem;
+  --fnt-font-smaller: 0.694rem;
+  --fnt-font-caption: 0.579rem;
+
+ }
+
