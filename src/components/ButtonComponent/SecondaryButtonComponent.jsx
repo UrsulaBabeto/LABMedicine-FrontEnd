@@ -1,5 +1,9 @@
-function SecondaryButtonComponent() {
-    return ( <></> );
+function SecondaryButtonComponent({nome}) {
+  return (
+    <>
+      <button>{nome}</button>
+    </>
+  );
 }
 
 export default SecondaryButtonComponent;
