@@ -1,23 +1,51 @@
-import {  GiDna2 } from "react-icons/gi";
-import './NavbarComponent.css'
+import { GiDna2 } from "react-icons/gi";
+import { SiHomebridge } from "react-icons/si";
+import { GiExitDoor } from "react-icons/gi";
+import { IoMdAddCircleOutline, IoIosList } from "react-icons/io";
+import "./NavbarComponent.css";
+
 function NavbarComponent() {
-    return (  <><section>
+  return (
+    <>
+      <section>
         {/* <ToolbarComponent/> */}
-          <div  >
-            <div className="logo"> <GiDna2/> </div>
-          <h1>LABMedicine</h1>      
-            <p>Geral</p>
-            <a href="">INICIO</a><br />
-            <a href="">SAIR</a><br />
-            <p>Pacientes</p>
-            <a href="">CADASTRAR</a><br />
-            <a href="">LISTAR PRONTUARIO</a><br />
-            <p>Exames</p>
-            <a href="">CADASTRAR CONSULTA</a><br />
-            <a href="">CADASTRAR EXAME</a><br />
+        <div>
+          <div className="logo">
+            {" "}
+            <GiDna2 />{" "}
+          </div>
+          <h1>LABMedicine</h1>
+          <p>Geral</p>
+          <div className="icons">
+            <SiHomebridge />
+            <a href=""> INICIO</a>
+          </div>
+          <div className="icons">
+            <GiExitDoor />
+            <a href="">SAIR</a>
+          </div>
+          <p>Pacientes</p>
+          <div className="icons">
+            <IoMdAddCircleOutline />
+            <a href="">CADASTRAR</a>
+          </div>
+          <div className="icons">
+            <IoIosList />
+            <a href="">LISTAR PRONTUARIO</a>
+          </div>
+          <p>Exames</p>
+          <div className="icons">
+            <IoMdAddCircleOutline />
+            <a href="">CADASTRAR CONSULTA</a>
+          </div>
+          <div className="icons">
+            <IoMdAddCircleOutline />
+            <a href="">CADASTRAR EXAME</a>
+          </div>
         </div>
-        </section>
-    </>);
+      </section>
+    </>
+  );
 }
 
 export default NavbarComponent;

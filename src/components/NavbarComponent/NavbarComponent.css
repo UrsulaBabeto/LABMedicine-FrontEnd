@@ -1,8 +1,36 @@
-section{
-    background-color: aquamarine;
-    width: 300px;
- 
+section {
+  background-color: var(--green-darker);
+  width: 300px;
+  color: var(--green-lighter);
+  text-align: center;
 }
-.logo{
-    font-size: 50px;
+.logo {
+  padding-top: 20px;
+  font-size: 70px;
+  text-align: center;
+}
+h1 {
+  text-align: center;
+  font-size: var(--fnt-font-heading-1);
+}
+p {
+  font-size: var(--fnt-font-heading-5);
+  text-align: center;
+  border-bottom: 1px solid var(--green-lighter);
+}
+.icons {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  font-size: var(--fnt-font-heading-5);
+}
+a {
+  text-decoration: none;
+  color: var(--gray-lighter);
+}
+a:hover{
+    text-shadow: 0 0 2px var(--gray-light);
+}
+a:active{
+    font-weight:bold;
 }
