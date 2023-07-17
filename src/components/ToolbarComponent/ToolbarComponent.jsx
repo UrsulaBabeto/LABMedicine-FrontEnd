@@ -1,4 +1,4 @@
-function ToolbarComponent({ name, avatar, titulo }) {
+function ToolbarComponent({ name, avatar, titulo}) {
   return (
     <>
       <header>
