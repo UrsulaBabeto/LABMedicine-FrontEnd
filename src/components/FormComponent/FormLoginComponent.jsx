@@ -85,7 +85,7 @@ function FormLoginComponent() {
           <ButtonComponent nome="Acessar" />
 
           <div className="action">
-            <Styled.link type="button">Esqueci minha senha</Styled.link>
+            <Styled.link type="button" onClick={()=>{alert('Em construção')}}>Esqueci minha senha</Styled.link>
             <SecondaryButtonComponent type="button" nome="Criar Conta" />
           </div>
         </Styled.Form>
