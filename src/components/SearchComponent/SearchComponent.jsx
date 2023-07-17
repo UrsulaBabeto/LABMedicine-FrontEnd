@@ -1,7 +1,7 @@
 import SecondaryButtonComponent from "../ButtonComponent/SecondaryButtonComponent";
 import InputComponent from "../InputComponent/InputComponent";
 
-function Search() {
+function SearchComponent() {
   return (
     <>
       <section>
@@ -16,4 +16,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default Component;
