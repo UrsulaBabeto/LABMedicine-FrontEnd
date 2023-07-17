@@ -4,8 +4,8 @@ function LoginPage() {
 const img = "../../public/MedicalLogo.png"
 return ( <>
     <div className='body'> 
-    <img src={img} height={500} /> 
     <FormLoginComponent/>
+    <img src={img} height={500} /> 
     </div>
     </> );
 }

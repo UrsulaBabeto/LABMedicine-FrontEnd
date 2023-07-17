@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 export const Form = styled.form`
   width: 100%;
   height: 500px;
-  background: linear-gradient(146deg, #D8F3DC  50%, #40916C 100%);
   margin: 0 auto;
   
 `;
