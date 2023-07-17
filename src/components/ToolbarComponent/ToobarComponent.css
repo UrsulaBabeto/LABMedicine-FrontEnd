@@ -3,6 +3,7 @@
     color: var(--green-lighter);
     display: flex;
     justify-content: space-between;
+    width: 100vw;
 }
 
 img{
