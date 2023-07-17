@@ -1,16 +1,11 @@
 import { styled } from "styled-components";
 
 export const Form = styled.form`
-  width: 550px;
-  height: 400px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background: var(--green-lighter);
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(146deg, #D8F3DC  50%, #40916C 100%);
   margin: 0 auto;
-  display: flex;
-
-  align-items: center;
-  flex-direction: column;
+  
 `;
 export const Header = styled.div`
   width: 100%;
@@ -20,16 +15,14 @@ export const Header = styled.div`
   text-align: center;
 `;
 export const InputGroup = styled.div`
-  width: 100%;
+  width: 80%;
   height: 92px;
   flex-shrink: 0;
   margin: 0 auto;
   display: flex;
-  align-items: center;
   flex-direction: column;
 
 `;
-
 export const Title = styled.h2`
   color: var(--green-darker);
   font-family: Forum;
@@ -39,34 +32,21 @@ export const Title = styled.h2`
 
 export const subtitle = styled.p`
   text-align: center;
-  padding: 10px;
-  flex-shrink: 0;
   color: var(--green-darker);
   font-family: Forum;
   font-size: var(--fnt-font-paragraph);
 
 `;
-export const Icon = styled.span`
-position: absolute;
-bottom: 15.8em;
-right: 13rem;
-background: transparent;
-display: flex;
-justify-content: center;
-align-items: center;
-border: none;
-color:${({$color}) => { return $color === 'danger' ? 'var(--message-error)' : 'var(--green-darker)'}};;
-  background: transparent;
-`;
+
 export const link = styled.a`
   text-align: left;
-  padding: 0 20px 0 0;
+  padding: 20px 40px 0 30px;
   flex-shrink: 0;
   color: var(--green-darker);
   font-family: Forum;
   font-size: var(--fnt-font-paragraph);
   font-style: normal;
-  margin-left: -5px;
+margin-left: 20px;
   &:hover {
     text-shadow: 0 0 1px var(--green-darker);
   }
