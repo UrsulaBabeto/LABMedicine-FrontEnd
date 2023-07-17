@@ -1,4 +1,4 @@
-function ToobarComponent({ name, avatar, titulo }) {
+function ToolbarComponent({ name, avatar, titulo }) {
   return (
     <>
       <header>
@@ -12,4 +12,4 @@ function ToobarComponent({ name, avatar, titulo }) {
   );
 }
 
-export default ToobarComponent;
+export default ToolbarComponent;
