@@ -1,0 +1,13 @@
+.header{
+    background-color: var(--green-darker);
+    color: var(--green-lighter);
+    display: flex;
+    justify-content: space-between;
+}
+
+img{
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-color: var(--green-light);
+}
