@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
-import * as Styled from "../Form/Login.style";
+import * as Styled from "./InputStyle";
 
 
 function InputComponent({ label, id, type, placeholder, register, error }) {
