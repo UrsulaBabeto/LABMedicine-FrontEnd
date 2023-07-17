@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-import InputComponent from "../InputComponent/InputComponent";
+import InputComponent from "../../InputComponent/InputComponent";
 
 
 import * as Styled from "./FormLoginComponent";
