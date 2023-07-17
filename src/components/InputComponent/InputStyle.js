@@ -1,15 +1,5 @@
 import { styled } from "styled-components";
 
-export const InputGroup = styled.div`
-  width: 100%;
-  height: 92px;
-  flex-shrink: 0;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-`;
 
 export const Label = styled.label`
   color:${({$color}) => { return $color === 'danger' ? 'var(--message-error)' : 'var(--green-darker)'}};
@@ -48,8 +38,8 @@ export const Input = styled.input`
 
 export const Icon = styled.span`
 position: absolute;
-bottom: 15.8em;
-right: 13rem;
+bottom: 0;
+left: 25rem;
 background: transparent;
 display: flex;
 justify-content: center;

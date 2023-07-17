@@ -1,7 +1,9 @@
-function SecondaryButtonComponent({nome}) {
+import "./SecondaryButtonComponent.css"
+
+function SecondaryButtonComponent({nome, type}) {
   return (
     <>
-      <button>{nome}</button>
+      <button className="create" type={type}>{nome}</button>
     </>
   );
 }
