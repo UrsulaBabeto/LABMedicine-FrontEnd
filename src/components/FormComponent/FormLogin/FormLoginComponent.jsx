@@ -1,12 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-
-
 import * as Styled from "./FormLoginStyled";
 
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
-import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
+import ModalCriarUsuario from "../../ModalCriarUsuario/ModalCriarUsuario";
 import InputLoginComponent from "../../InputComponent/InputLogin/InputLoginComponent";
 
 function FormLoginComponent() {
@@ -44,8 +42,11 @@ function FormLoginComponent() {
   };
   return (
     <>
-
-     <Styled.Form onSubmit={handleSubmit(onSubmitForm)}> 
+    <div>
+    <p>ainda não ppssui uma conta? </p>
+      <ModalCriarUsuario />
+      </div>
+      <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
         <Styled.Header>
           <Styled.Title>LOGIN</Styled.Title>
           <Styled.subtitle>
@@ -81,15 +82,13 @@ function FormLoginComponent() {
           />
           {/* 
           {errors.password && <span>This field is required</span>} */}
-          </Styled.InputGroup>
-          <ButtonComponent nome="Acessar" />
+        </Styled.InputGroup>
+        <ButtonComponent nome="Acessar" />
 
-          <div className="action">
-            <Styled.link type="button">Esqueci minha senha</Styled.link>
-            <SecondaryButtonComponent type="button" nome="Criar Conta" />
-          </div>
-        </Styled.Form>
-    
+        <div className="action">
+          <Styled.link type="button">Esqueci minha senha</Styled.link>
+        </div>
+      </Styled.Form>
     </>
   );
 }

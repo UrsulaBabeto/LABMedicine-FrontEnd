@@ -13,4 +13,5 @@ color: var(--green-darker) ;
 `
 export const TextArea = styled.textarea`
 margin: 5px;
+width: 80%;
 `
