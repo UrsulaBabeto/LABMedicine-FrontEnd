@@ -1,4 +1,5 @@
-import FormLoginComponent from '../../components/FormComponent/FormLoginComponent';
+import FormLoginComponent from '../../components/FormComponent/FormLogin/FormLoginComponent.jsx';
+
 import '../../../public/MedicalLogo.png'
 function LoginPage() {
 const img = "../../public/MedicalLogo.png"
