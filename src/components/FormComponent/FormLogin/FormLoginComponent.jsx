@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-import InputComponent from "../../InputComponent/InputComponent";
+import InputComponent from "../InputComponent/InputComponent";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
+import SecondaryButtonComponent from "../ButtonComponent/SecondaryButtonComponent";
 
+import * as Styled from "./FormLoginStyled";
+import './FormLogin.css'
 
-import * as Styled from "./FormLoginComponent";
-import "./Login.css";
-
-export const FormLoginComponent = () => {
- /*  const users = [
+function FormLoginComponent() {
+  /*  const users = [
     {
       id: 1,
       email: "email@email.com",
@@ -34,7 +35,7 @@ export const FormLoginComponent = () => {
     password === user.password
       ? redirectToHome()
       : alert("Ops! Usuário e/ou Senha Invalidos.");
-  }; 
+  };
   const navigate = useNavigate();
 
   const redirectToHome = () => {
@@ -79,22 +80,17 @@ export const FormLoginComponent = () => {
           />
           {/* 
           {errors.password && <span>This field is required</span>} */}
-        </Styled.InputGroup>
-        <Styled.Button
-          $active={!errors.password && !errors.email}
-          type="submit"
-          disabled={errors.email || errors.password}
-        >
-          Acessar
-        </Styled.Button>
-        <div className="action">
-          <Styled.link type="button">Esqueci minha senha</Styled.link>
-          <button type="button" className="create">
-            Criar Conta
-          </button>
-        </div>
-      </Styled.Form>
+          </Styled.InputGroup>
+          <ButtonComponent nome="Acessar" />
+
+          <div className="action">
+            <Styled.link type="button">Esqueci minha senha</Styled.link>
+            <SecondaryButtonComponent type="button" nome="Criar Conta" />
+          </div>
+        </Styled.Form>
+    
     </>
   );
-};
+}
 
+export default FormLoginComponent;

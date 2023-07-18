@@ -1,14 +1,20 @@
-
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css'
-import FormCadastroUsuarioComponent from './components/FormComponent/FormCadastroUsuario/FormCadastroUsuarioComponent'
+import LoginPage from './pages/LoginPage/LoginPage'
 
 function App() {
 
 
   return (
     <>
-<FormCadastroUsuarioComponent/>
-      app is render
+     <Router>
+    <Routes>
+        <Route path='/' element={<LoginPage/>}/>
+     {/*    <Route path='/home' element={<HomePage/>}/> */}
+{/*         <Route path='*' element={}/> */}
+    </Routes>
+ </Router>
+
 
 
     </>
