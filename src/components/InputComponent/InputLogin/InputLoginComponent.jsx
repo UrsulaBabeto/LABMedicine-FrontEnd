@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
-import * as Styled from "./InputStyle";
+import * as Styled from "./InputLoginStyle";
 
 
-function InputComponent({ label, id, type, placeholder, register, error }) {
+function InputLoginComponent({ label, id, type, placeholder, register, error }) {
     const [showPassword, setShowPassword] = useState(false);
   
     const handleShowPassword = () => {
@@ -38,4 +38,4 @@ function InputComponent({ label, id, type, placeholder, register, error }) {
   }
   
 
-  export default InputComponent;
+  export default InputLoginComponent;

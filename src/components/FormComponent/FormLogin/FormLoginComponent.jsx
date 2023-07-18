@@ -42,7 +42,7 @@ export const FormLoginComponent = () => {
   };
   return (
     <>
-      <input type="" />
+
      <Styled.Form onSubmit={handleSubmit(onSubmitForm)}> 
         <Styled.Header>
           <Styled.Title>LOGIN</Styled.Title>
