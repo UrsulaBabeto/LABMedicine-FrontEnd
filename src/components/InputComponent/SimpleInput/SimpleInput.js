@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import InputMask from 'react-input-mask';
 
 export const Div = styled.div`
 display: flex;
@@ -11,7 +12,7 @@ export const Label = styled.label`
 font-size: var(--fnt-font-heading-5);
 color: var( --green-darker) ;
 `
-export const Input = styled.input`
+export const Input = styled(InputMask)`
 font-size: var(--fnt-font-paragraph);
 color: var( --gray-darker) ;
  width: 70%; 

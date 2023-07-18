@@ -20,58 +20,110 @@ import OptionComponent from "../../OptionComponent/OptionComponent";
 import * as Styled from "./FormCadastroStyled";
 
 function FormCadastroUsuarioComponent() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   return (
     <>
-      <Styled.Form action="">
+      {/* onSubmit={handleSubmit(onSubmit)} */}
+      <Styled.Form>
         <Styled.Div>
           <h2>Idetificação</h2>
         </Styled.Div>
-        <SimpleInputComponent label="Nome Completo" id="name" type="text" />
+        <SimpleInputComponent
+          label="Nome Completo"
+          id="name"
+          type="text"
+          {...register("name", { required: true, minLength: 5, maxLength: 50 })}
+        />
         <OptionComponent
+          id="Genero"
           name="Genero"
           value="Cisgenero"
           value1="Transgenero"
           value2="Prefiro não declarar"
+          {...register("Genero", { required: true })}
         />
+
         <OptionComponent
+          id="Sexo"
           name="Sexo"
           value="Feminino"
           value1="Masculino"
           value2="Prefiro não declarar"
+          {...register("Sexo", { required: true })}
         />
+
         <SimpleInputComponent
           label="Data de Nascimento"
           id="dataNasc"
           type="date"
+          {...register("dataNasc", { required: true })}
         />
-        <SimpleInputComponent label="CPF" id="cpf" type="text"   width={70} />
-        <SimpleInputComponent label="RG" id="rg" type="text" />
-        <SimpleInputComponent label="Email" id="email" type="text" />
-        <SimpleInputComponent label="Telefone" id="tel" type="text" />
+
+        <SimpleInputComponent
+          mask="000.000.000-00"
+          label="CPF"
+          id="cpf"
+          type="text"
+          {...register("cpf", { required: true })}
+        />
+
+        <SimpleInputComponent
+          mask="44.444.444-4"
+          label="RG"
+          id="rg"
+          type="text"
+          {...register("rg", { required: true, maxLength: 20 })}
+        />
+
+        <SimpleInputComponent
+          label="Email"
+          id="email"
+          type="email"
+          {...register("email", { required: true })}
+        />
+        <SimpleInputComponent
+          mask="(99) 9 9999-9999"
+          label="Telefone"
+          id="tel"
+          type="text"
+          {...register("tel", { required: true })}
+        />
+
         <OptionComponent
+          id="EstadoCivil"
           name="Estado Civil"
           value="Solteiro(a)"
           value1="Casado(a)"
           value2="Viuvo(a)"
           value3="Divorciado(a)"
+          {...register("EstadoCivil", { required: true })}
         />
-        <SimpleInputComponent label="Naturalidade" id="naturalidade" />
+
+        <SimpleInputComponent
+          label="Naturalidade"
+          id="naturalidade"
+          {...register("birthplace", {
+            required: true,
+            minLength: 5,
+            maxLength: 50,
+          })}
+        />
         <Styled.Div>
           <h2>Dados Medicos</h2>
         </Styled.Div>
 
         <Styled.Div>
           <Styled.Label htmlFor="">Alergias</Styled.Label>
-          <Styled.TextArea id="emergencia" cols="30" rows="4" />
+          <Styled.TextArea id="alergias" cols="30" rows="4" />
         </Styled.Div>
         <Styled.Div>
-          <Styled.Label htmlFor="">Contato de Emergência</Styled.Label>
-          <Styled.TextArea id="emergencia" cols="30" rows="4" />
+          <SimpleInputComponent
+            ref={register("emergencia",{ required: true })}
+            mask={"(99) 9 9999-9999"}
+            label="Contato de Emergência"
+            id="emergencia"
+            type="text"
+          />
         </Styled.Div>
         <Styled.Div>
           <Styled.Label htmlFor="">Lista de Cuidados Específicos</Styled.Label>
