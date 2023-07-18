@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-import InputComponent from "../InputComponent/InputComponent";
-import ButtonComponent from "../ButtonComponent/ButtonComponent";
-import SecondaryButtonComponent from "../ButtonComponent/SecondaryButtonComponent";
+
 
 import * as Styled from "./FormLoginStyled";
-import './FormLogin.css'
+
+import ButtonComponent from "../../ButtonComponent/ButtonComponent";
+import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
+import InputLoginComponent from "../../InputComponent/InputLogin/InputLoginComponent";
 
 function FormLoginComponent() {
   /*  const users = [
@@ -52,7 +53,7 @@ function FormLoginComponent() {
           </Styled.subtitle>
         </Styled.Header>
         <Styled.InputGroup>
-          <InputComponent
+          <InputLoginComponent
             type={"email"}
             label={"Email"}
             id={"email"}
@@ -68,7 +69,7 @@ function FormLoginComponent() {
             }}
             error={errors.email}
           />
-          <InputComponent
+          <InputLoginComponent
             type={"password"}
             label={"Senha"}
             id={"password"}
