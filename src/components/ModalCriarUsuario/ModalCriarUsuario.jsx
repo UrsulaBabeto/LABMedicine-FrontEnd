@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import FormCadastroUsuarioComponent from '../FormComponent/FormCadastroUsuario/FormCadastroUsuarioComponent';
 
+
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
@@ -60,7 +61,7 @@ BootstrapDialogTitle.propTypes = {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button className='button' variant="outlined" onClick={handleClickOpen}>
         Criar Conta
       </Button>
       <BootstrapDialog

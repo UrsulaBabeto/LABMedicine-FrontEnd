@@ -8,38 +8,45 @@ export const Label = styled.label`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-left: -350px;  
 `;
 
+export const Div = styled.div`
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  `
 export const Input = styled.input`
-  width: 100%;
+  width:400px;
   height: 29px;
-  flex-shrink: 0;
-  border-radius: 4px;
-  border:1px solid;
-  border-color: ${({$color}) => { return $color === 'danger' ?'var(--message-error)' : 'var(--green-darker)'}};
   background: transparent;
-  margin-bottom: 0 auto;
+  margin-bottom: 10px;
   position: relative;
+  outline: none;
+  border: 0;
+  box-shadow: inset 0 -2px 0 var(--green-darker);
+  padding: 5px 40px 5px 2px;
   &:focus,
   &:active,
   &hover {
-    background-color: var(--gray-lighter);
-    border: 1px solid var(--gray-darker);
-    font-size: 16px;
-    padding-left: 5px;
+outline: none;
+border: 0;
+transition: all .4s ease;
+box-shadow: inset 0 -2px 0 var(--green-dark);
   }
-
   &::placeholder {
-    color: var(--gray-darker);
+    color:  ${({$color}) => { return $color === 'danger' ?'var(--message-error)' : 'var(--green-darker)'}};
     padding-left: 5px;
-    font-size: 14px;
+    font-size: 20px;
   }
 `;
 
 export const Icon = styled.span`
 position: absolute;
 bottom: 0;
-left: 25rem;
+right: 25rem;
 background: transparent;
 display: flex;
 justify-content: center;
