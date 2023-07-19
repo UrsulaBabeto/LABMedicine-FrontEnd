@@ -1,0 +1,7 @@
+.custom-button{
+    background-color: var(--green-darker);
+    width: 80%;
+}
+.custom-button:hover{
+    background-color: var(--green-dark);
+}
