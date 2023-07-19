@@ -41,11 +41,11 @@ function NavbarComponent() {
           <p>EXAMES</p>
           <div className="icons">
             <AddIcon />
-            <Link href="">Cadastrar Consulta</Link>
+            <Link href="/cadastro-consulta">Cadastrar Consulta</Link>
           </div>
           <div className="icons">
             <AddIcon />
-            <Link href="">Cadastrar Exame</Link>
+            <Link href="/cadastro-exame">Cadastrar Exame</Link>
           </div>
         </div>
       </section>

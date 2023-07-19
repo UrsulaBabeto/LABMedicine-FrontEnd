@@ -19,12 +19,13 @@ function FormCadastroConsulta() {
             maxLength: 60,
           })}
         />
-        <SimpleInputComponent
-          label="Data da Consulta"
-          id="consulta"
-          type="datetime"
+       <DateTimePicker
+  label="Data da Consulta"
+  value={value}
+  onChange={(newValue) => setValue(newValue)}
           {...register("consulta", { required: true })}
-        />
+/>
+      
         <Styled.Div>
           <Styled.Label htmlFor="">Decrição do Problema</Styled.Label>
           <Styled.TextArea
