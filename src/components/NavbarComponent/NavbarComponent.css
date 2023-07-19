@@ -1,11 +1,13 @@
 section {
   background-color: var(--green-darker);
-  width: 300px;
+  width: 35%;
   color: var(--green-lighter);
-  text-align: center;
+  text-align: center; 
+  margin-top: -30px;
+  margin-left: 5px;
 }
 .logo {
-  padding-top: 20px;
+align-self: center;
   font-size: 70px;
   text-align: center;
 }
@@ -17,11 +19,15 @@ p {
   font-size: var(--fnt-font-heading-5);
   text-align: center;
   border-bottom: 1px solid var(--green-lighter);
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 .icons {
-  padding: 10px;
+  
   display: flex;
-  gap: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
   font-size: var(--fnt-font-heading-5);
 }
 a {

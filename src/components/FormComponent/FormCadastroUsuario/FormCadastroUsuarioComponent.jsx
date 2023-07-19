@@ -111,11 +111,6 @@ function FormCadastroUsuarioComponent() {
         <Styled.Div>
           <h2>Dados Medicos</h2>
         </Styled.Div>
-
-        <Styled.Div>
-          <Styled.Label htmlFor="">Alergias</Styled.Label>
-          <Styled.TextArea id="alergias" cols="30" rows="4" />
-        </Styled.Div>
         <Styled.Div>
           <SimpleInputComponent
             ref={register("emergencia",{ required: true })}
@@ -124,6 +119,11 @@ function FormCadastroUsuarioComponent() {
             id="emergencia"
             type="text"
           />
+        </Styled.Div>
+
+        <Styled.Div>
+          <Styled.Label htmlFor="">Alergias</Styled.Label>
+          <Styled.TextArea id="alergias" cols="30" rows="4" />
         </Styled.Div>
         <Styled.Div>
           <Styled.Label htmlFor="">Lista de Cuidados Específicos</Styled.Label>

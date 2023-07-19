@@ -1,13 +1,20 @@
+import "./ToolbarComponent.css";
+
 function ToobarComponent({ name, avatar, titulo }) {
   return (
     <>
-      <header>
+      <div className="header">
         <div>
           <h2>{titulo}</h2>
         </div>
-        <h3>Bem vindo, {name}</h3>
-        <img src={avatar} alt="foto pessoal" />
-      </header>
+
+        <div className="toolbarMargin">
+          <h4>Bem vindo(a), {name}</h4>
+        <div>
+            <img src={avatar} alt="foto pessoal" />
+            </div>
+        </div>
+      </div>
     </>
   );
 }

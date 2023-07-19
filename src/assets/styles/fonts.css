@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100;400;700&display=swap');
 :root {
   --fnt-font-size: 18px;
   --fnt-line-height: 2em;
-  --fnt-font-family: 'Forum', cursive;
-  --fnt-font-secondary: 'Inter', sans-serif;
+  --fnt-font-family: 'Roboto Serif', serif;
+ 
 
   --fnt-font-heading-1: 2.488rem;
   --fnt-font-heading-2: 2.07rem;
