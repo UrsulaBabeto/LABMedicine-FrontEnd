@@ -4,7 +4,7 @@ import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputCo
 
 import * as Styled from "../FormCadastroUsuario/FormCadastroStyled";
 
-function FormCadastroConsulta() {
+function FormCadastroExame() {
   const { register, handleSubmit } = useForm();
   return (
     <>
@@ -84,4 +84,4 @@ function FormCadastroConsulta() {
   );
 }
 
-export default FormCadastroConsulta;
+export default FormCadastroExame;
