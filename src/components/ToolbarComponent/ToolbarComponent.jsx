@@ -19,4 +19,4 @@ function ToobarComponent({ name, avatar, titulo }) {
   );
 }
 
-export default ToobarComponent;
+export default ToolbarComponent;
