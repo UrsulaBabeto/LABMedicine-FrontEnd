@@ -29,32 +29,32 @@ function FormCadastroPacienteComponent() {
             maxLength: 50,
           })}
         />
+        <div>
+          <OptionComponent
+            id="Genero"
+            name="Genero"
+            value="Cisgenero"
+            value1="Transgenero"
+            value2="Prefiro não declarar"
+            {...register("Genero", { required: true })}
+          />
 
-        <OptionComponent
-          id="Genero"
-          name="Genero"
-          value="Cisgenero"
-          value1="Transgenero"
-          value2="Prefiro não declarar"
-          {...register("Genero", { required: true })}
-        />
+          <OptionComponent
+            id="Sexo"
+            name="Sexo"
+            value="Feminino"
+            value1="Masculino"
+            value2="Prefiro não declarar"
+            {...register("Sexo", { required: true })}
+          />
 
-        <OptionComponent
-          id="Sexo"
-          name="Sexo"
-          value="Feminino"
-          value1="Masculino"
-          value2="Prefiro não declarar"
-          {...register("Sexo", { required: true })}
-        />
-
-        <SimpleInputComponent
-          label="Data de Nascimento"
-          id="dataNasc"
-          type="date"
-          {...register("dataNasc", { required: true })}
-        />
-
+          <SimpleInputComponent
+            label="Data de Nascimento"
+            id="dataNasc"
+            type="date"
+            {...register("dataNasc", { required: true })}
+          />
+        </div>
         <SimpleInputComponent
           mask="000.000.000-00"
           label="CPF"
@@ -84,17 +84,17 @@ function FormCadastroPacienteComponent() {
           type="text"
           {...register("tel", { required: true })}
         />
-
-        <OptionComponent
-          id="EstadoCivil"
-          name="Estado Civil"
-          value="Solteiro(a)"
-          value1="Casado(a)"
-          value2="Viuvo(a)"
-          value3="Divorciado(a)"
-          {...register("EstadoCivil", { required: true })}
-        />
-
+        <div>
+          <OptionComponent
+            id="EstadoCivil"
+            name="Estado Civil"
+            value="Solteiro(a)"
+            value1="Casado(a)"
+            value2="Viuvo(a)"
+            value3="Divorciado(a)"
+            {...register("EstadoCivil", { required: true })}
+          />
+        </div>
         <SimpleInputComponent
           label="Naturalidade"
           id="naturalidade"
@@ -127,8 +127,8 @@ function FormCadastroPacienteComponent() {
           <Styled.Label htmlFor="">Lista de Cuidados Específicos</Styled.Label>
           <Styled.TextArea id="cuidados" cols="20" rows="4" />
         </Styled.Div>
-        </Styled.Form>
-        <Styled.Form>
+      </Styled.Form>
+      <Styled.Form>
         <Styled.Div>
           <h2>Convenio</h2>
         </Styled.Div>

@@ -2,7 +2,7 @@ select,
 option {
   font-size: var(--fnt-font-heading-4);
   color: var(--gray-darker);
-  width: 200px;
+  width: 300px;
   padding: 5px;
   border: 1px solid var(--green-darker);
   border-radius: 2px;
