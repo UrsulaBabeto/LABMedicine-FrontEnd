@@ -2,7 +2,9 @@ import { useForm } from "react-hook-form";
 
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 
-import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
+
+import * as Styled from "../FormCadastroUsuario/FormCadastroStyled";
+import DatePicker from "../../DatePickerComponent/DatePickerComponent";
 
 function FormCadastroExame() {
   const { register, handleSubmit } = useForm();
@@ -20,7 +22,7 @@ function FormCadastroExame() {
           })}
         />
 
-       {/*  data e hora ant.design timepicker */}
+    <DatePicker/>
 
        <SimpleInputComponent
           label="Tipo do Exame:"
@@ -84,4 +86,15 @@ function FormCadastroExame() {
   );
 }
 
-export default FormCadastroExame;
+
+export default FormCadastroConsulta;
+
+/* 
+Deve conter uma busca de paciente e um formulário
+para cadastro de consulta com botões editar, deletar e salvar.
+a. Durante o cadastro, os botões de editar e deletar devem ficar desativados
+(desabilitados).
+c. Deverá verificar os dados informados antes de cadastrar.
+d. Deverá criar um identificador único para cada exame cadastrado.
+e. Deverá apresentar animação ao salvar. */
+

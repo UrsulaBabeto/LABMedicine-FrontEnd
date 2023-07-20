@@ -54,3 +54,4 @@ function NavbarComponent() {
 }
 
 export default NavbarComponent;
+/* b. Deverá existir um botão para esconder e mostrar o menu lateral. */

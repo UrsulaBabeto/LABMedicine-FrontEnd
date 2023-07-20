@@ -6,6 +6,7 @@ import * as Styled from "./FormLoginStyled";
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
 import ModalCriarUsuario from "../../ModalCriarUsuario/ModalCriarUsuario";
 import InputLoginComponent from "../../InputComponent/InputLogin/InputLoginComponent";
+import AlertComponent from "../../AlertComponent/AlertComponent";
 
 function FormLoginComponent() {
   /*  const users = [
@@ -42,9 +43,9 @@ function FormLoginComponent() {
   };
   return (
     <>
-    <div>
-    <p>ainda não ppssui uma conta? </p>
-      <ModalCriarUsuario />
+      <div>
+        <p>ainda não ppssui uma conta? </p>
+        <ModalCriarUsuario />
       </div>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
         <Styled.Header>
@@ -84,10 +85,7 @@ function FormLoginComponent() {
           {errors.password && <span>This field is required</span>} */}
         </Styled.InputGroup>
         <ButtonComponent nome="Acessar" />
-
-        <div className="action">
-          <Styled.link type="button">Esqueci minha senha</Styled.link>
-        </div>
+        <AlertComponent />
       </Styled.Form>
     </>
   );
