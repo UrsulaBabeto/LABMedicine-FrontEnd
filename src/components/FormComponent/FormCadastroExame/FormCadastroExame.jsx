@@ -5,7 +5,6 @@ import DateTime from "../../DatePickerComponent/DatePickerComponent";
 
 import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 
-
 function FormCadastroExame() {
   const { register, handleSubmit } = useForm();
   return (
@@ -21,8 +20,6 @@ function FormCadastroExame() {
             maxLength: 50,
           })}
         />
-
-        <DateTime />
 
         <SimpleInputComponent
           label="Tipo do Exame:"
@@ -77,6 +74,7 @@ function FormCadastroExame() {
             })}
           />
         </Styled.Div>
+        <DateTime />
       </Styled.Form>
     </>
   );

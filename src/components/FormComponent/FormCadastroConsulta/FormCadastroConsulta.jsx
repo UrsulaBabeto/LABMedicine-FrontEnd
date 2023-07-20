@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
-import DatePicker from "../../DatePickerComponent/DatePickerComponent";
+import DateTime from "../../DatePickerComponent/DatePickerComponent";
+
 
 import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 
@@ -21,7 +22,6 @@ function FormCadastroConsulta() {
           })}
         />
 
-        <DateTime />
 
         <Styled.Div>
           <Styled.Label htmlFor="">Decrição do Problema</Styled.Label>
@@ -54,6 +54,7 @@ function FormCadastroConsulta() {
             })}
           />
         </Styled.Div>
+            <DateTime />
       </Styled.Form>
     </>
   );

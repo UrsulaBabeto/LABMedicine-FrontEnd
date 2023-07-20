@@ -9,13 +9,13 @@ import InputLoginComponent from "../../InputComponent/InputLogin/InputLoginCompo
 import AlertComponent from "../../AlertComponent/AlertComponent";
 
 function FormLoginComponent() {
-  /*  const users = [
+   const users = [
     {
       id: 1,
       email: "email@email.com",
       password: "asdfg123",
     },
-  ];*/
+  ];  
   const {
     register,
     handleSubmit,
@@ -43,11 +43,11 @@ function FormLoginComponent() {
   };
   return (
     <>
-      <div>
-        <p>ainda não ppssui uma conta? </p>
-        <ModalCriarUsuario />
-      </div>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
+        <div>
+          <span>ainda não possui uma conta? </span>
+          <ModalCriarUsuario />
+        </div>
         <Styled.Header>
           <Styled.Title>LOGIN</Styled.Title>
           <Styled.subtitle>
@@ -81,11 +81,9 @@ function FormLoginComponent() {
             }}
             error={errors.password}
           />
-          {/* 
-          {errors.password && <span>This field is required</span>} */}
+           <ButtonComponent nome="Acessar" />
+          <AlertComponent />
         </Styled.InputGroup>
-        <ButtonComponent nome="Acessar" />
-        <AlertComponent />
       </Styled.Form>
     </>
   );

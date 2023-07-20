@@ -7,14 +7,14 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
 export default function DateTime() {
   return (
-    <div style={{ width: "350px" }}>
+    <div style={{ width: "400px" }}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DateTimePicker"]}>
           <DemoItem
             label="Data"
-            value={value}
+    /*         value={value}
             onChange={(newValue) => setValue(newValue)}
-            {...register("consulta", { required: true })}
+            {...register("consulta", { required: true })} */
           >
             <DateTimePicker defaultValue={dayjs("2022-04-17T15:30")} />
           </DemoItem>
