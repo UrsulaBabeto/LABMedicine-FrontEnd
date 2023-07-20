@@ -19,7 +19,7 @@ function App() {
           <Route path="/cadastro-exame" element={<CadastroExamePage />} />
           <Route path="/cadastro-consulta" element={<CadastroConsultaPage />} />
           {/*          <Route path="/prontuario" element={< />} /> */}
-          {/*           <Route path="*" element={<NotFoundPage />} /> */}
+                   <Route path="*" element={<NotFoundPage />} /> 
         </Routes>
       </Router>
     </>
