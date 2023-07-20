@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 
-import * as Styled from "../FormCadastroUsuario/FormCadastroStyled";
+import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 
 function FormCadastroConsulta() {
   const { register, handleSubmit } = useForm();
@@ -19,18 +19,18 @@ function FormCadastroConsulta() {
             maxLength: 60,
           })}
         />
-       <DateTimePicker
+{/*        <DateTimePicker
   label="Data da Consulta"
   value={value}
   onChange={(newValue) => setValue(newValue)}
           {...register("consulta", { required: true })}
 />
-      
+      */} 
         <Styled.Div>
           <Styled.Label htmlFor="">Decrição do Problema</Styled.Label>
           <Styled.TextArea
             id="descricao"
-            cols="30"
+            cols="90"
             rows="4"
             {...register("motivo", {
               required: true,
@@ -48,7 +48,7 @@ function FormCadastroConsulta() {
           <Styled.Label htmlFor="">Dosagens e Precauções</Styled.Label>
           <Styled.TextArea
             id="dose"
-            cols="30"
+            cols="90"
             rows="4"
             {...register("motivo", {
               required: true,

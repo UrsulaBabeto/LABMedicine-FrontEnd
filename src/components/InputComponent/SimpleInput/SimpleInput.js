@@ -9,14 +9,14 @@ justify-content: center;
 `
 
 export const Label = styled.label`
-font-size: var(--fnt-font-heading-5);
+font-size: var(--fnt-font-heading-4);
 color: var( --green-darker) ;
 `
 export const Input = styled(InputMask)`
-font-size: var(--fnt-font-paragraph);
+font-size: var(--fnt-font-heading-4);
 color: var( --gray-darker) ;
  width: 80%; 
-padding: 5px;
+padding: 7px;
 border: 1px solid var( --green-darker);
 border-radius: 2px;
 `

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 
-import * as Styled from "../FormCadastroUsuario/FormCadastroStyled";
+import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 
 function FormCadastroExame() {
   const { register, handleSubmit } = useForm();

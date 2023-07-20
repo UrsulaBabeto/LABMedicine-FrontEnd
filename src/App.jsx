@@ -15,6 +15,7 @@ function App() {
           <Route path="/cadastro-paciente" element={<CadastroPacientePage />} />
           <Route path="/cadastro-exame" element={<CadastroExamePage />} />
           <Route path="/cadastro-consulta" element={<CadastroConsultaPage />} />
+          {/*          <Route path="/prontuario" element={< />} /> */}
           {/*           <Route path="*" element={<NotFoundPage />} /> */}
         </Routes>
       </Router>

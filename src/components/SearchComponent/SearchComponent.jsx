@@ -7,7 +7,7 @@ function SearchComponent() {
     <>
       <section>
         <SimpleInputComponent
-          type="text"
+          type="search"
           id="search"
           placeholder="Digite um nome para buscar"
         />

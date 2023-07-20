@@ -1,21 +1,30 @@
 import ToolbarComponent from "../../components/ToolbarComponent/ToolbarComponent";
-import SearchComponent from '../../components/SearchComponent/SearchComponent'
+import SearchComponent from "../../components/SearchComponent/SearchComponent";
 import NavbarComponent from "../../components/NavbarComponent/NavbarComponent";
-import FormCadastroUsuarioComponent from "../../components/FormComponent/FormCadastroUsuario/FormCadastroUsuarioComponent";
+import FormCadastroPacienteComponent from "../../components/FormComponent/FormCadastroPaciente/FormCadastroPaciente";
+import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
 
-import './CadastroPacientePage.css'
+import "./CadastroPacientePage.css";
+
 function CadastroPacientePage() {
-    return ( 
+  return (
     <>
-    <div>
-    <ToolbarComponent  titulo="Cadastro de Paciente" name="Ursula" avatar="" />
-    </div>
-    <div className="content">
-   
-    <NavbarComponent/>
-    <FormCadastroUsuarioComponent/>
-    </div>
-    </> );
+      <div>
+        <ToolbarComponent
+          titulo="Cadastro de Paciente"
+          name="Ursula"
+          avatar=""
+        />
+      </div>
+      <div className="content">
+        <NavbarComponent />
+        <FormCadastroPacienteComponent />
+      </div>
+        <div className="button1">
+          <ButtonComponent nome={"Salvar"} />
+        </div>
+    </>
+  );
 }
 
 export default CadastroPacientePage;

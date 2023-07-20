@@ -21,31 +21,31 @@ function NavbarComponent() {
           <p>GERAL</p>
           <div className="icons">
             <HomeIcon />
-            <a href=""> Inicio</a>
+            <Link to="/home"> Inicio</Link>
           </div>
           <div className="icons">
             <LogoutIcon />
-            <a href="/">Sair</a>
+            <Link to="/">Sair</Link>
           </div>
       
           <p>PACIENTES</p>
           <div className="icons">
            <AddIcon /> 
-            <Link href="/cadastro-paciente">Cadastrar</Link>
+            <Link to="/cadastro-paciente">Cadastrar</Link>
           </div>
           <div className="icons">
             <FormatListBulletedIcon />
-            <Link href="">Listar Prontuario</Link>
+            <Link to="/prontuario">Listar Prontuario</Link>
           </div>
       
           <p>EXAMES</p>
           <div className="icons">
             <AddIcon />
-            <Link href="/cadastro-consulta">Cadastrar Consulta</Link>
+            <Link to="/cadastro-consulta">Cadastrar Consulta</Link>
           </div>
           <div className="icons">
             <AddIcon />
-            <Link href="/cadastro-exame">Cadastrar Exame</Link>
+            <Link to="/cadastro-exame">Cadastrar Exame</Link>
           </div>
         </div>
       </section>
