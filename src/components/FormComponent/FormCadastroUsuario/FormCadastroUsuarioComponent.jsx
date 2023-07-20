@@ -1,17 +1,12 @@
-/* Campos do formulário:
-i. Nome Completo: Obrigatório, com máximo e mínimo de 50 e 5
-caracteres, respectivamente.
-.
-
-
-
-x. Contato de Emergência: Obrigatório com o formato (99) 9 9999-99999
-xi. Lista de Alergias: Não obrigatório.
-xii. Lista de Cuidados Específicos: Não obrigatório.
-xvi. Endereço: 
+/*
+Deve conter um formulário para cadastro de
+paciente com botões para editar, deletar e salvar.
+a. Durante o cadastro, os botões de editar e deletar devem ficar desativados
+(desabilitados).
 c. Deverá utilizar a API do ViaCEP para buscar os dados de endereço.
 d. Deverá verificar os dados informados antes de cadastrar.
-e. Deverá criar um identificador único para cada paciente cadastrado. */
+e. Deverá criar um identificador único para cada paciente cadastrado.
+f. Deverá apresentar animação ao salvar. */
 import { useForm } from "react-hook-form";
 
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
