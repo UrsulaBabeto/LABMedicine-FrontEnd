@@ -1,0 +1,18 @@
+select,
+option {
+  font-size: var(--fnt-font-heading-4);
+  color: var(--gray-darker);
+  width: 300px;
+  padding: 5px;
+  border: 1px solid var(--green-darker);
+  border-radius: 2px;
+}
+label {
+  font-size: var(--fnt-font-heading-4);
+  color: var(--green-darker);
+}
+div {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
