@@ -1,11 +1,15 @@
 section {
   background-color: var(--green-darker);
-  width: 300px;
+  width: 40%;
   color: var(--green-lighter);
-  text-align: center;
+  text-align: center; 
+  margin-top: -15px;
+  padding: 20px;
+  margin-left: 5px;
+  box-shadow: 2px 2px 4px var(--green-dark);
 }
 .logo {
-  padding-top: 20px;
+align-self: center;
   font-size: 70px;
   text-align: center;
 }
@@ -14,19 +18,25 @@ h1 {
   font-size: var(--fnt-font-heading-1);
 }
 p {
-  font-size: var(--fnt-font-heading-5);
+  font-size: var(--fnt-font-heading-3);
   text-align: center;
   border-bottom: 1px solid var(--green-lighter);
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 .icons {
-  padding: 10px;
+  
   display: flex;
-  gap: 10px;
-  font-size: var(--fnt-font-heading-5);
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+ 
 }
 a {
   text-decoration: none;
   color: var(--gray-lighter);
+  font-size: var(--fnt-font-heading-4);
 }
 a:hover{
     text-shadow: 0 0 2px var(--gray-light);
