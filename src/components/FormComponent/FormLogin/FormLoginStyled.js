@@ -17,7 +17,6 @@ export const Header = styled.div`
 export const InputGroup = styled.div`
   width: 80%;
   height: 92px;
-  flex-shrink: 0;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -25,7 +24,6 @@ export const InputGroup = styled.div`
 `;
 export const Title = styled.h2`
   color: var(--green-darker);
-  font-family: Forum;
   font-size: var(--fnt-font-heading-2);
   padding-top: 20px;
 `;
@@ -33,7 +31,6 @@ export const Title = styled.h2`
 export const subtitle = styled.p`
   text-align: center;
   color: var(--green-darker);
-  font-family: Forum;
   font-size: var(--fnt-font-paragraph);
 
 `;
@@ -41,11 +38,8 @@ export const subtitle = styled.p`
 export const link = styled.a`
   text-align: left;
   padding: 20px 40px 0 30px;
-  flex-shrink: 0;
   color: var(--green-darker);
-  font-family: Forum;
   font-size: var(--fnt-font-paragraph);
-  font-style: normal;
 margin-left: 20px;
   &:hover {
     text-shadow: 0 0 1px var(--green-darker);

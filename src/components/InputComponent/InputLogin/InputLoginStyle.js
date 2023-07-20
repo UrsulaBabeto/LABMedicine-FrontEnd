@@ -15,6 +15,7 @@ export const Input = styled.input`
   height: 29px;
   flex-shrink: 0;
   border-radius: 4px;
+  padding: 7px;
   border:1px solid;
   border-color: ${({$color}) => { return $color === 'danger' ?'var(--message-error)' : 'var(--green-darker)'}};
   background: transparent;

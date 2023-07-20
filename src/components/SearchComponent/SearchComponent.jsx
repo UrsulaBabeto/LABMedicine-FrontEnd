@@ -1,12 +1,13 @@
 import SecondaryButtonComponent from "../ButtonComponent/SecondaryButtonComponent";
-import InputComponent from "../InputComponent/InputComponent";
+import SimpleInputComponent from "../InputComponent/SimpleInput/SimpleInputComponent";
+
 
 function SearchComponent() {
   return (
     <>
       <section>
-        <InputComponent
-          type="text"
+        <SimpleInputComponent
+          type="search"
           id="search"
           placeholder="Digite um nome para buscar"
         />
@@ -16,4 +17,4 @@ function SearchComponent() {
   );
 }
 
-export default Component;
+export default SearchComponent;
