@@ -1,12 +1,9 @@
 import { useForm } from "react-hook-form";
 
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
-
-
-import * as Styled from "../FormCadastroUsuario/FormCadastroStyled";
 import DatePicker from "../../DatePickerComponent/DatePickerComponent";
 
-
+import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 
 function FormCadastroConsulta() {
   const { register, handleSubmit } = useForm();
@@ -24,17 +21,7 @@ function FormCadastroConsulta() {
           })}
         />
 
-        <DatePicker/>
-        <SimpleInputComponent
-          label="Data da Consulta"
-          id="consulta"
-          type="datetime"
-
-{/*        <DateTimePicker
-  label="Data da Consulta"
-  value={value}
-  onChange={(newValue) => setValue(newValue)}
-          {...register("consulta", { required: true })}/>      */} 
+        <DateTime />
 
         <Styled.Div>
           <Styled.Label htmlFor="">Decrição do Problema</Styled.Label>

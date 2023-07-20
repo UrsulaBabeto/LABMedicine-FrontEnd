@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
+import DateTime from "../../DatePickerComponent/DatePickerComponent";
 
+import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 
-import * as Styled from "../FormCadastroUsuario/FormCadastroStyled";
-import DatePicker from "../../DatePickerComponent/DatePickerComponent";
 
 function FormCadastroExame() {
   const { register, handleSubmit } = useForm();
@@ -22,9 +22,9 @@ function FormCadastroExame() {
           })}
         />
 
-    <DatePicker/>
+        <DateTime />
 
-       <SimpleInputComponent
+        <SimpleInputComponent
           label="Tipo do Exame:"
           id="tipoExame"
           type="text"
@@ -34,7 +34,7 @@ function FormCadastroExame() {
             maxLength: 30,
           })}
         />
-       <SimpleInputComponent
+        <SimpleInputComponent
           label="Laboratório:"
           id="lab"
           type="text"
@@ -44,12 +44,8 @@ function FormCadastroExame() {
             maxLength: 30,
           })}
         />
-       <SimpleInputComponent
-          label="URL Documento:"
-          id="lab"
-          type="url"       
-        />
-    
+        <SimpleInputComponent label="URL Documento:" id="lab" type="url" />
+
         <Styled.Div>
           <Styled.Label htmlFor="">Resultados:</Styled.Label>
           <Styled.TextArea
@@ -86,8 +82,7 @@ function FormCadastroExame() {
   );
 }
 
-
-export default FormCadastroConsulta;
+export default FormCadastroExame;
 
 /* 
 Deve conter uma busca de paciente e um formulário
@@ -97,4 +92,3 @@ a. Durante o cadastro, os botões de editar e deletar devem ficar desativados
 c. Deverá verificar os dados informados antes de cadastrar.
 d. Deverá criar um identificador único para cada exame cadastrado.
 e. Deverá apresentar animação ao salvar. */
-

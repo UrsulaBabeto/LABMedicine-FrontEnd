@@ -8,6 +8,7 @@ import CadastroConsultaPage from "./pages/CadastroConsultaPage/CadastroConsultaP
 function App() {
   return (
     <>
+    
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage />} />
