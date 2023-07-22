@@ -1,6 +1,6 @@
 import "./ToolbarComponent.css";
 
-function ToobarComponent({ name, avatar, titulo }) {
+function ToolbarComponent({ name, avatar, titulo }) {
   return (
     <>
       <div className="header">
