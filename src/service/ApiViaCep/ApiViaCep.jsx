@@ -1,20 +1,9 @@
-const BASE_URL = "viacep.com.br/ws/RESOURCE/json/";
+const API_VIACEP = `http://viacep.com.br/ws/CEP/json/`
 
-export class ApiViaCep {
-  apiUrl;
-  headers = {
-    "Content-type": "application/JSON",
-  };
-
-  constructor(endpoint) {
-    this.apiUrl = BASE_URL.replace("RESOURCE", endpoint);
+ 
+ const GetCEP = async (cep) => {
+    const response = await fetch(API_VIACEP.replace('CEP', cep.replace("-", "").trim()));
+    const data = await response.json();
+    return data;
   }
 
-  Get = async () => {
-    const response = await fetch(this.apiUrl);
-    const res = async (response) => {
-      await response.json();
-      return res;
-    };
-  };
-}

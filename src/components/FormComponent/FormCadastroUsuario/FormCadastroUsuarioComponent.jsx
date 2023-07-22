@@ -1,4 +1,3 @@
-
 /*
 Deve conter um formulário para cadastro de
 paciente com botões para editar, deletar e salvar.
@@ -10,65 +9,82 @@ e. Deverá criar um identificador único para cada paciente cadastrado.
 f. Deverá apresentar animação ao salvar. */
 
 import { useForm } from "react-hook-form";
+import { ApiService } from "../../../service/ApiService/ApiService";
+import React, { useState } from "react";
+
+import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 
 import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 
-import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
-import ButtonComponent from "../../ButtonComponent/ButtonComponent";
-
 function FormCadastroUsuario() {
+  const service = new ApiService("newUser");
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  return ( 
+  const onSubmitForm = async (data) => {
+    const { name, email, authEmail, password, authPassword } = data;
+
+    if (!data) {
+      reset();
+      <AlertComponent
+        type="warning"
+        text="Dados obrigatórios, tente novamente"
+      />;
+      return;
+    } else {
+      await service.Create(data)
+      };
+    
+  };
+  return (
     <>
-    <Styled.Form>
-       <SimpleInputComponent
+      <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
+        <SimpleInputComponent
           label="Nome Completo"
           id="name"
           type="text"
           {...register("name", { required: true, minLength: 5, maxLength: 50 })}
         />
-<SimpleInputComponent
+        <SimpleInputComponent
           label="Email"
           id="email"
           type="email"
           {...register("email", { required: true })}
         />
         <SimpleInputComponent
-        label="Confirmar Email"
-        id="authEmail"
-        type="email"
-        {...register("email", { required: true })}
-      />
-         <SimpleInputComponent
-            type={"password"}
-            label={"Senha"}
-            id={"password"}
-            placeholder={""}
-            register={{
-              ...register("password", { required: true, minLength: 8 }),
-            }}
-            error={errors.password}
-          />
-             <SimpleInputComponent
-            type={"password"}
-            label={"Confirmar Senha"}
-            id={"authPassword"}
-            placeholder={""}
-            register={{
-              ...register("password", { required: true, minLength: 8 }),
-            }}
-            error={errors.password}
-          />
-         
-</Styled.Form>
+          label="Confirmar Email"
+          id="authEmail"
+          type="email"
+          {...register("email", { required: true })}
+        />
+        <SimpleInputComponent
+          type={"password"}
+          label={"Senha"}
+          id={"password"}
+          placeholder={""}
+          register={{
+            ...register("password", { required: true, minLength: 8 }),
+          }}
+          error={errors.password}
+        />
+        <SimpleInputComponent
+          type={"password"}
+          label={"Confirmar Senha"}
+          id={"authPassword"}
+          placeholder={""}
+          register={{
+            ...register("password", { required: true, minLength: 8 }),
+          }}
+          error={errors.password}
+        />
+      </Styled.Form>
     </>
-   );
+  );
 }
 
 export default FormCadastroUsuario;

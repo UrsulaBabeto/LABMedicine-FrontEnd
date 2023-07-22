@@ -29,7 +29,7 @@ export const subtitle = styled.p`
   font-size: var(--fnt-font-heading-5);
 `;
 
-export const link = styled.a`
+/* export const link = styled.a`
   text-align: left;
   padding: 20px 40px 0 30px;
   color: var(--green-darker);
@@ -41,4 +41,4 @@ export const link = styled.a`
   &:active {
     font-weight: bold;
   }
-`;
+`; */
