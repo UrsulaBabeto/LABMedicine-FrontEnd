@@ -1,7 +1,7 @@
 function NotFoundPage() {
   return (
-    <div className="d-flex flex-column align-items-center">
-        <h1 className="text-secondary mt-5">
+    <div className="notFoundContainer">
+        <h1 className="text404">
           404 Página não encontrada!
         </h1>
       <img src="../../../public/404.jpg" alt="" width={400} />

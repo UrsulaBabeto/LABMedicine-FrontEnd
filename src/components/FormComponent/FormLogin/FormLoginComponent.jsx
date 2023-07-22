@@ -1,12 +1,13 @@
-/* import { useNavigate } from "react-router-dom"; */
+import { useNavigate } from "react-router-dom"; 
 import { useForm } from "react-hook-form";
 
-import * as Styled from "./FormLoginStyled";
 
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
 import ModalCriarUsuario from "../../ModalCriarUsuario/ModalCriarUsuario";
 import InputLoginComponent from "../../InputComponent/InputLogin/InputLoginComponent";
 import AlertComponent from "../../AlertComponent/AlertComponent";
+
+import * as Styled from "./FormLoginStyled";
 
 function FormLoginComponent() {
    const users = [
@@ -36,11 +37,11 @@ function FormLoginComponent() {
       ? redirectToHome()
       : alert("Ops! Usuário e/ou Senha Invalidos.");
   };
-/*   const navigate = useNavigate();
+   const navigate = useNavigate();
 
   const redirectToHome = () => {
     navigate("/home");
-  }; */
+  }; 
   return (
     <>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
