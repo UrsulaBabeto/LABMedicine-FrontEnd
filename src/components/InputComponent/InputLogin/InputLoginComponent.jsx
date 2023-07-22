@@ -14,7 +14,7 @@ function InputLoginComponent({ label, id, type, placeholder, register, error }) 
         <Styled.Label $color={error && 'danger'} htmlFor={id}>{label} </Styled.Label>
   
         {type !== "textarea" && (
-          <div>
+          <Styled.InputDiv>
             <Styled.Input
               type={showPassword ? "text" : type}
               id={id}
@@ -27,7 +27,7 @@ function InputLoginComponent({ label, id, type, placeholder, register, error }) 
                 {!showPassword ? <MdVisibility /> : <MdVisibilityOff />}
               </Styled.Icon>
             )}
-          </div>
+          </Styled.InputDiv>
         )}
   
         {type === "textarea" && (

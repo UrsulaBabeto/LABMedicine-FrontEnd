@@ -3,7 +3,6 @@ import SearchComponent from "../../components/SearchComponent/SearchComponent";
 import NavbarComponent from "../../components/NavbarComponent/NavbarComponent";
 import FormCadastroPacienteComponent from "../../components/FormComponent/FormCadastroPaciente/FormCadastroPaciente";
 import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
-
 import "./CadastroPacientePage.css";
 
 function CadastroPacientePage() {
@@ -20,6 +19,7 @@ function CadastroPacientePage() {
         <NavbarComponent />
         <FormCadastroPacienteComponent />
       </div>
+ 
         <div className="button1">
           <ButtonComponent nome={"Salvar"} />
         </div>

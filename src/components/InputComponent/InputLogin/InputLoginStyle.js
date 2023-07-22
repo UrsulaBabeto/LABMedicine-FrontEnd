@@ -5,9 +5,12 @@ export const Label = styled.label`
     return $color === "danger" ? "var(--message-error)" : "var(--green-darker)";
   }};
 `;
+export const InputDiv = styled.div`
+position: relative;
+`;
 
 export const Input = styled.input`
-position: relative;
+
   outline: none;
   border: none;
   padding: 5px 40px 5px 2px;
@@ -36,8 +39,8 @@ position: relative;
 
 export const Icon = styled.span`
   position: absolute;
-  bottom: 5rem;
-  right: 3rem;
+  bottom: 2rem;
+  right: 2rem;
   background: transparent;
   display: flex;
   font-size: var(--fnt-font-heading-5);

@@ -4,8 +4,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import CadastroPacientePage from "./pages/CadastroPacientePage/CadastroPacientePage";
 import CadastroExamePage from "./pages/CadastroExamePage/CadastroExamePage";
 import CadastroConsultaPage from "./pages/CadastroConsultaPage/CadastroConsultaPage";
-
-import LoginPage from './pages/LoginPage/LoginPage'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
 function App() {
   return (
