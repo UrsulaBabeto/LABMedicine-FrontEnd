@@ -1,4 +1,4 @@
-/* import { useNavigate } from "react-router-dom"; */
+import { useNavigate } from "react-router-dom"; 
 import { useForm } from "react-hook-form";
 
 import * as Styled from "./FormLoginStyled";
@@ -36,11 +36,11 @@ function FormLoginComponent() {
       ? redirectToHome()
       : alert("Ops! Usuário e/ou Senha Invalidos.");
   };
-/*   const navigate = useNavigate();
+   const navigate = useNavigate();
 
   const redirectToHome = () => {
     navigate("/home");
-  }; */
+  }; 
   return (
     <>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
