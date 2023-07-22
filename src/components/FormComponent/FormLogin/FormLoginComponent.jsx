@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom"; 
 import { useForm } from "react-hook-form";
 
-import * as Styled from "./FormLoginStyled";
 
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
 import ModalCriarUsuario from "../../ModalCriarUsuario/ModalCriarUsuario";
 import InputLoginComponent from "../../InputComponent/InputLogin/InputLoginComponent";
 import AlertComponent from "../../AlertComponent/AlertComponent";
+
+import * as Styled from "./FormLoginStyled";
 
 function FormLoginComponent() {
    const users = [
