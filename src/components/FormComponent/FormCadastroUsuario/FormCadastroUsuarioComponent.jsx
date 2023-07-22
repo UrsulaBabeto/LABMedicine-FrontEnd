@@ -49,7 +49,7 @@ function FormCadastroUsuario() {
             type={"password"}
             label={"Senha"}
             id={"password"}
-            placeholder={"Digite sua senha"}
+            placeholder={""}
             register={{
               ...register("password", { required: true, minLength: 8 }),
             }}
@@ -59,7 +59,7 @@ function FormCadastroUsuario() {
             type={"password"}
             label={"Confirmar Senha"}
             id={"authPassword"}
-            placeholder={"Digite sua senha"}
+            placeholder={""}
             register={{
               ...register("password", { required: true, minLength: 8 }),
             }}

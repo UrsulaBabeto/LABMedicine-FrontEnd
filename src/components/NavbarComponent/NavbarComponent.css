@@ -44,3 +44,11 @@ a:hover{
 a:active{
     font-weight:bold;
 }
+.switchButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 100px;
+  color: var(--gray-lighter);
+}

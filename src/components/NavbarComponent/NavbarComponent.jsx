@@ -1,20 +1,20 @@
-import { GiDna2 } from "react-icons/gi";
-import HomeIcon   from '@mui/icons-material/Home';
-import AddIcon from '@mui/icons-material/Add';
-import LogoutIcon from '@mui/icons-material/Logout';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import "./NavbarComponent.css";
-
 import { Link } from "react-router-dom";
+
+import SwitchComponent from "../SwitchComponent/SwitchComponent";
+
+import { GiDna2 } from "react-icons/gi";
+import HomeIcon from "@mui/icons-material/Home";
+import AddIcon from "@mui/icons-material/Add";
+import LogoutIcon from "@mui/icons-material/Logout";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import "./NavbarComponent.css";
 
 function NavbarComponent() {
   return (
     <>
       <section>
-    
         <div>
           <div className="logo">
-           
             <GiDna2 />{" "}
           </div>
           <h1>LABMedicine</h1>
@@ -27,17 +27,17 @@ function NavbarComponent() {
             <LogoutIcon />
             <Link to="/">Sair</Link>
           </div>
-      
+
           <p>PACIENTES</p>
           <div className="icons">
-           <AddIcon /> 
+            <AddIcon />
             <Link to="/cadastro-paciente">Cadastrar</Link>
           </div>
           <div className="icons">
             <FormatListBulletedIcon />
             <Link to="/prontuario">Listar Prontuario</Link>
           </div>
-      
+
           <p>EXAMES</p>
           <div className="icons">
             <AddIcon />
@@ -47,6 +47,9 @@ function NavbarComponent() {
             <AddIcon />
             <Link to="/cadastro-exame">Cadastrar Exame</Link>
           </div>
+        </div>
+        <div className="switchButton">
+          <SwitchComponent id="switchButton" defaultChecked color="warning"/>
         </div>
       </section>
     </>
