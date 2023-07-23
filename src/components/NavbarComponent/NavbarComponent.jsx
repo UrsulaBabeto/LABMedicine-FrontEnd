@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import SwitchComponent from "../SwitchComponent/SwitchComponent";
 import { GiDna2 } from "react-icons/gi";
 import HomeIcon from "@mui/icons-material/Home";
-import AddIcon from "@mui/icons-material/Add";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import BiotechIcon from "@mui/icons-material/Biotech";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+
 import "./NavbarComponent.css";
 
 function NavbarComponent() {
@@ -37,7 +40,7 @@ function NavbarComponent() {
 
             <p>PACIENTES</p>
             <div className="icons">
-              <AddIcon />
+              <PersonAddAltIcon />
               <Link to="/cadastro-paciente">Cadastrar</Link>
             </div>
             <div className="icons">
@@ -47,11 +50,11 @@ function NavbarComponent() {
 
             <p>EXAMES</p>
             <div className="icons">
-              <AddIcon />
+              <CalendarMonthIcon />
               <Link to="/cadastro-consulta">Cadastrar Consulta</Link>
             </div>
             <div className="icons">
-              <AddIcon />
+              <BiotechIcon />
               <Link to="/cadastro-exame">Cadastrar Exame</Link>
             </div>
           </div>
@@ -79,7 +82,7 @@ function NavbarComponent() {
             <div>
               <Link to="/cadastro-paciente">
                 {" "}
-                <AddIcon />
+                <PersonAddAltIcon />
               </Link>
             </div>
             <div>
@@ -92,15 +95,14 @@ function NavbarComponent() {
             <p>EXAMES</p>
             <div>
               <Link to="/cadastro-consulta">
-                <AddIcon />
+                <CalendarMonthIcon />
               </Link>
             </div>
             <div>
               <Link to="/cadastro-exame">
-                <AddIcon />
+                <BiotechIcon />
               </Link>
             </div>
-          </div>
         )}
         <div className="switchButton">
           <SwitchComponent id="switchButton" defaultChecked color="warning" />
@@ -111,3 +113,6 @@ function NavbarComponent() {
 }
 
 export default NavbarComponent;
+
+/* b. Deverá existir um botão para esconder e mostrar o menu lateral. */
+
