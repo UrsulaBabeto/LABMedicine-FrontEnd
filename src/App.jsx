@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToolbarProvider } from "./contexts/ToolbarContext/ToolbarContext";
 
 import LoginPage from "./pages/LoginPage/LoginPage";
 import CadastroPacientePage from "./pages/CadastroPacientePage/CadastroPacientePage";
@@ -10,6 +11,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 function App() {
   return (
     <>
+    <ToolbarProvider>
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -21,6 +23,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
+      </ToolbarProvider>
     </>
   );
 }

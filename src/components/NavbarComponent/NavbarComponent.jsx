@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import SwitchComponent from "../SwitchComponent/SwitchComponent";
 
 import { GiDna2 } from "react-icons/gi";
@@ -10,6 +9,7 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import "./NavbarComponent.css";
 
 function NavbarComponent() {
+ 
   return (
     <>
       <section>

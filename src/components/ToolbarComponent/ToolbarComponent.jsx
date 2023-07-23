@@ -1,17 +1,21 @@
+import { useContext } from "react";
+import { ToolbarContext } from "../../contexts/ToolbarContext/ToolbarContext";
+
 import "./ToolbarComponent.css";
 
-function ToolbarComponent({ name, avatar, titulo }) {
+function ToolbarComponent() {
+  const{toolbar, setToolbar} = useContext(ToolbarContext)
   return (
     <>
       <div className="header">
         <div>
-          <h2>{titulo}</h2>
+          <h2>{toolbar.title}</h2>
         </div>
 
         <div className="toolbarMargin">
-          <h4>Bem vindo(a), {name}</h4>
+          <h4>Bem vindo(a), {toolbar.username}</h4>
         <div>
-            <img src={avatar} alt="foto pessoal" />
+            <img src={toolbar.avatar} alt="foto pessoal" />
             </div>
         </div>
       </div>

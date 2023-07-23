@@ -7,12 +7,9 @@ import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonCompo
 
 import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
-import InputLoginComponent from "../../InputComponent/InputLogin/InputLoginComponent";
 
 function FormCadastroConsulta() {
   const [showAlert, setShowAlert] = useState(false);
-  const [alertType, setAlertType] = useState("");
-  const [alertText, setAlertText] = useState("");
 
   const {
     register,
@@ -26,17 +23,19 @@ function FormCadastroConsulta() {
 
     if (!isValid) {
       reset();
-      setShowAlert(true);
-      setAlertType("warning");
-      setAlertText("Dados obrigatórios, tente novamente");
+      return (
+        <AlertComponent
+          type="warning"
+          text="Dados obrigatórios, tente novamente"
+        />
+      );
     } else {
       try {
         await service.Create(data);
-        setShowAlert(true);
-        setAlertType("success");
-        setAlertText("Consulta criada com sucesso");
+
+        <AlertComponent type="success" text="Consulta criada com sucesso" />;
       } catch (error) {
-        console.error(error);
+        console.error("erro");
       }
     }
   };
@@ -50,7 +49,10 @@ await service.Get().then((res) => {
  */
   return (
     <>
-      {showAlert && <AlertComponent type={alertType} text={alertText} />}
+      {showAlert && (
+        <AlertComponent type={"error"} text="Documento não encontrado" />
+      )}
+
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
         <Styled.Buttons>
           <div>
@@ -75,10 +77,9 @@ await service.Get().then((res) => {
         />
 
         <Styled.Div>
-          <InputLoginComponent // Use the correct component import syntax
-            label="Decrição do Problema"
+          <Styled.Label htmlFor="">Decrição do Problema</Styled.Label>
+          <Styled.TextArea
             id="descricao"
-            type="textarea"
             cols="90"
             rows="4"
             register={{
@@ -100,10 +101,10 @@ await service.Get().then((res) => {
           }}
         />
         <Styled.Div>
-          <InputLoginComponent
-            label="Dosagens e Precauções"
+          <Styled.Label htmlFor="">Dosagens e Precauções</Styled.Label>
+          <Styled.TextArea
+         
             id="dose"
-            type="textarea"
             cols="90"
             rows="4"
             register={{
