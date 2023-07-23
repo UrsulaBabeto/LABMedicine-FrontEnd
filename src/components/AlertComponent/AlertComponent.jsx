@@ -29,7 +29,7 @@ export default function AlertComponent({ text,type }) {
         Esqueceu a senha clique aqui
       </Button>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity={"type"} sx={{ width: "100%" }}>
+        <Alert onClose={handleClose} severity={type} sx={{ width: "100%" }}>
           {text}
         </Alert>
       </Snackbar>

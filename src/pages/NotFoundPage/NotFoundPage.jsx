@@ -4,7 +4,7 @@ function NotFoundPage() {
         <h1 className="text404">
           404 Página não encontrada!
         </h1>
-      <img src="../../../public/404.jpg" alt="" width={400} />
+      <img src="/404.jpg" alt="" width={400} />
       
     </div>
   );

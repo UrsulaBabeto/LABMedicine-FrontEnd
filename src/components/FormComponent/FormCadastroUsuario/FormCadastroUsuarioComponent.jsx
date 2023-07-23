@@ -11,13 +11,19 @@ f. Deverá apresentar animação ao salvar. */
 import { useForm } from "react-hook-form";
 import { ApiService } from "../../../service/ApiService/ApiService";
 
-
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 
 import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 
 function FormCadastroUsuario() {
-  const service = new ApiService("newUser");
+  const service = new ApiService("users");
+     /*    await service.Get().then((res) => {
+      let user = res.find((u) => u.email === email);
+      if(!user){
+        delete data.authPassword
+
+      }
+    }); */
 
   const {
     register,
@@ -39,6 +45,7 @@ function FormCadastroUsuario() {
       );
     } else {
       try {
+    delete
         await service.Create(data);
 
         <AlertComponent type="success" text="Usuario criado com sucesso" />;
@@ -49,9 +56,7 @@ function FormCadastroUsuario() {
   };
   return (
     <>
-    <div>
-      ButtonComponent
-    </div>
+      <div>ButtonComponent</div>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
         <SimpleInputComponent
           label="Nome Completo"
@@ -64,12 +69,6 @@ function FormCadastroUsuario() {
           id="email"
           type="email"
           {...register("email", { required: true })}
-        />
-        <SimpleInputComponent
-          label="Confirmar Email"
-          id="authEmail"
-          type="email"
-          {...register("authEmail", { required: true })}
         />
         <SimpleInputComponent
           type={"password"}

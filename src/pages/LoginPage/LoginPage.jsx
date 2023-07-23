@@ -7,7 +7,7 @@ function LoginPage() {
   return (
     <>
       <div className="container">
-        <img className="img" src="../../../public/MedicalLogo.png" />
+        <img className="img" src="/MedicalLogo.png" />
 
         <FormLoginComponent />
       </div>

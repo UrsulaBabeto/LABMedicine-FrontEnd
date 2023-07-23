@@ -25,9 +25,10 @@ export class ApiService {
   };
 
   Create = async (body) => {
+    const data = JSON.stringify(body);
     const response = await fetch(this.apiUrl, {
       method: "POST",
-      body,
+      body: data,
       headers: this.headers,
     });
     return this._getJsonData(response);
