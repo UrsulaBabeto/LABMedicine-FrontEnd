@@ -10,7 +10,7 @@ f. Deverá apresentar animação ao salvar. */
 
 import { useForm } from "react-hook-form";
 import { ApiService } from "../../../service/ApiService/ApiService";
-import React, { useState } from "react";
+
 
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 
@@ -23,26 +23,35 @@ function FormCadastroUsuario() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const onSubmitForm = async (data) => {
     const { name, email, authEmail, password, authPassword } = data;
 
-    if (!data) {
+    if (!isValid) {
       reset();
-      <AlertComponent
-        type="warning"
-        text="Dados obrigatórios, tente novamente"
-      />;
-      return;
+      return (
+        <AlertComponent
+          type="warning"
+          text="Dados obrigatórios, tente novamente"
+        />
+      );
     } else {
-      await service.Create(data)
-      };
-    
+      try {
+        await service.Create(data);
+
+        <AlertComponent type="success" text="Usuario criado com sucesso" />;
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
   return (
     <>
+    <div>
+      ButtonComponent
+    </div>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
         <SimpleInputComponent
           label="Nome Completo"
@@ -60,7 +69,7 @@ function FormCadastroUsuario() {
           label="Confirmar Email"
           id="authEmail"
           type="email"
-          {...register("email", { required: true })}
+          {...register("authEmail", { required: true })}
         />
         <SimpleInputComponent
           type={"password"}
@@ -78,7 +87,7 @@ function FormCadastroUsuario() {
           id={"authPassword"}
           placeholder={""}
           register={{
-            ...register("password", { required: true, minLength: 8 }),
+            ...register("authPassword", { required: true, minLength: 8 }),
           }}
           error={errors.password}
         />

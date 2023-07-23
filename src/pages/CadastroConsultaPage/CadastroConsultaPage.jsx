@@ -18,9 +18,7 @@ function CadastroConsultaPage() {
       <div className="content">
         <NavbarComponent />
         <FormCadastroConsulta/>
-        <div className="button">
-          <ButtonComponent nome={"Salvar"} />
-        </div>
+        
       </div>
     </>
   );

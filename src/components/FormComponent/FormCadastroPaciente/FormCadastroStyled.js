@@ -20,3 +20,11 @@ export const TextArea = styled.textarea`
 margin: 5px;
 width: 70%;
 `
+export const Buttons = styled.div`
+display:flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-evenly;
+margin: 0;
+padding: 0;
+`
