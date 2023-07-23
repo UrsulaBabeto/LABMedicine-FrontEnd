@@ -6,15 +6,69 @@ import { useForm } from "react-hook-form";
 
 import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 import OptionComponent from "../../OptionComponent/OptionComponent";
+import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
 
 import * as Styled from "./FormCadastroStyled";
 
 function FormCadastroPacienteComponent() {
-  const { register, handleSubmit } = useForm();
+  const [showAlert, setShowAlert] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm();
+
+  const onSubmitForm = async (data) => {
+    const {
+      name,
+      Genero,
+      Sexo,
+      dataNasc,
+      cpf,
+      rg,
+      email,
+      tel,
+      EstadoCivil,
+      naturalidade,
+      emergencia,
+      alergias,
+      cuidados,
+      convenio,
+      numConvenio,
+      valConvenio,
+      cep,
+      cidade,
+      estado,
+      logradouro,
+      numero,
+      complemento,
+      bairro,
+      referencia,
+    } = data;
+
+    if (!isValid) {
+      reset();
+      return (
+        <AlertComponent
+          type="warning"
+          text="Dados obrigatórios, tente novamente"
+        />
+      );
+    } else {
+      try {
+        await service.Create(data);
+
+        <AlertComponent type="success" text="Paciente criado com sucesso" />;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
   return (
     <>
-      {/* onSubmit={handleSubmit(onSubmit)} */}
-      <Styled.Form>
+      <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
         <Styled.Div>
           <h2>Idetificação</h2>
         </Styled.Div>
@@ -23,11 +77,14 @@ function FormCadastroPacienteComponent() {
           label="Nome Completo"
           id="name"
           type="text"
-          {...register("name", {
-            required: true,
-            minLength: 5,
-            maxLength: 50,
-          })}
+          register={{
+            ...register("name", {
+              required: true,
+              minLength: 5,
+              maxLength: 50,
+            }),
+          }}
+          error={errors.name}
         />
         <div>
           <OptionComponent
@@ -60,7 +117,8 @@ function FormCadastroPacienteComponent() {
           label="CPF"
           id="cpf"
           type="text"
-          {...register("cpf", { required: true })}
+          register={{ ...register("cpf", { required: true }) }}
+          error={errors.cpf}
         />
 
         <SimpleInputComponent
@@ -68,21 +126,24 @@ function FormCadastroPacienteComponent() {
           label="RG"
           id="rg"
           type="text"
-          {...register("rg", { required: true, maxLength: 20 })}
+          register={{ ...register("rg", { required: true, maxLength: 20 }) }}
+          error={errors.rg}
         />
 
         <SimpleInputComponent
           label="Email"
           id="email"
           type="email"
-          {...register("email", { required: true })}
+          register={{ ...register("email", { required: true }) }}
+          error={errors.email}
         />
         <SimpleInputComponent
           mask="(99) 9 9999-9999"
           label="Telefone"
           id="tel"
           type="text"
-          {...register("tel", { required: true })}
+          register={{ ...register("tel", { required: true }) }}
+          error={errors.tel}
         />
         <div>
           <OptionComponent
@@ -92,17 +153,21 @@ function FormCadastroPacienteComponent() {
             value1="Casado(a)"
             value2="Viuvo(a)"
             value3="Divorciado(a)"
-            {...register("EstadoCivil", { required: true })}
+            register={{ ...register("EstadoCivil", { required: true }) }}
+            error={errors.EstadoCivil}
           />
         </div>
         <SimpleInputComponent
           label="Naturalidade"
           id="naturalidade"
-          {...register("birthplace", {
-            required: true,
-            minLength: 5,
-            maxLength: 50,
-          })}
+          register={{
+            ...register("naturalidade", {
+              required: true,
+              minLength: 5,
+              maxLength: 50,
+            }),
+          }}
+          error={errors.naturalidade}
         />
 
         <Styled.Div>
@@ -111,44 +176,107 @@ function FormCadastroPacienteComponent() {
 
         <Styled.Div>
           <SimpleInputComponent
-            ref={register("emergencia", { required: true })}
             mask={"(99) 9 9999-9999"}
             label="Contato de Emergência"
             id="emergencia"
             type="text"
+            register={{ ...register("emergencia", { required: true }) }}
+            error={errors.emergencia}
           />
         </Styled.Div>
 
         <Styled.Div>
           <Styled.Label htmlFor="">Alergias</Styled.Label>
-          <Styled.TextArea id="alergias" cols="30" rows="4" />
+          <Styled.TextArea
+            id="alergias"
+            cols="30"
+            rows="4"
+            register={{ ...register("alergias") }}
+          />
         </Styled.Div>
         <Styled.Div>
           <Styled.Label htmlFor="">Lista de Cuidados Específicos</Styled.Label>
-          <Styled.TextArea id="cuidados" cols="20" rows="4" />
+          <Styled.TextArea
+            id="cuidados"
+            cols="20"
+            rows="4"
+            register={{ ...register("cuidados") }}
+          />
         </Styled.Div>
       </Styled.Form>
       <Styled.Form>
+        <Styled.Buttons>
+          <div>
+            <SecondaryButtonComponent nome="Editar" />
+          </div>
+          <div>
+            <SecondaryButtonComponent nome="Deletar" />
+          </div>
+        </Styled.Buttons>
         <Styled.Div>
           <h2>Convenio</h2>
         </Styled.Div>
 
-        <SimpleInputComponent label="Convenio" id="convenio" />
-        <SimpleInputComponent label="Nº Convenio" id="numConvenio" />
-        <SimpleInputComponent label="Validade Convenio" id="valConvenio" />
+        <SimpleInputComponent
+          label="Convenio"
+          id="convenio"
+          register={{ ...register("convenio") }}
+        />
+        <SimpleInputComponent
+          label="Nº Convenio"
+          id="numConvenio"
+          register={{ ...register("numConvenio") }}
+        />
+        <SimpleInputComponent
+          label="Validade Convenio"
+          id="valConvenio"
+          register={{ ...register("valConvenio") }}
+        />
 
         <Styled.Div>
           <h2>Endereço</h2>
         </Styled.Div>
 
-        <SimpleInputComponent label="cep" id="cep" />
-        <SimpleInputComponent label="Cidade" id="cidade" />
-        <SimpleInputComponent label="Estado" id="estado" />
-        <SimpleInputComponent label="Logradouro" id="logradouro" />
-        <SimpleInputComponent label="Número" id="numero" />
-        <SimpleInputComponent label="Complemento" id="complemento" />
-        <SimpleInputComponent label="Bairro" id="bairro" />
-        <SimpleInputComponent label="Ponto de Referência" id="referencia" />
+        <SimpleInputComponent
+          label="cep"
+          id="cep"
+          register={{ ...register("cep") }}
+        />
+        <SimpleInputComponent
+          label="Cidade"
+          id="cidade"
+          register={{ ...register("cidade") }}
+        />
+        <SimpleInputComponent
+          label="Estado"
+          id="estado"
+          register={{ ...register("estado") }}
+        />
+        <SimpleInputComponent
+          label="Logradouro"
+          id="logradouro"
+          register={{ ...register("logradouro") }}
+        />
+        <SimpleInputComponent
+          label="Número"
+          id="numero"
+          register={{ ...register("numero") }}
+        />
+        <SimpleInputComponent
+          label="Complemento"
+          id="complemento"
+          register={{ ...register("complemento") }}
+        />
+        <SimpleInputComponent
+          label="Bairro"
+          id="bairro"
+          register={{ ...register("bairro") }}
+        />
+        <SimpleInputComponent
+          label="Ponto de Referência"
+          id="referencia"
+          register={{ ...register("referencia") }}
+        />
       </Styled.Form>
     </>
   );

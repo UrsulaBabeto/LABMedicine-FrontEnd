@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "email@email.com",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "email": "email@email.com",
+      "password": "12345678"
+    }
+  ],
+  "newUser":[],
+  "pacientes": [],
+  "consultas": [],
+  "exames": []
+}

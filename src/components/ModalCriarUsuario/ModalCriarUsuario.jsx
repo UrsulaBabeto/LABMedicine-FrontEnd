@@ -60,7 +60,7 @@ BootstrapDialogTitle.propTypes = {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined"  sx={{ width: 200 }} onClick={handleClickOpen}>
         Criar Conta
       </Button>
       <BootstrapDialog

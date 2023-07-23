@@ -1,40 +1,42 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
-import * as Styled from "./FormLoginStyled";
+import { ApiService } from "../../../service/ApiService/ApiService";
 
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
 import ModalCriarUsuario from "../../ModalCriarUsuario/ModalCriarUsuario";
 import InputLoginComponent from "../../InputComponent/InputLogin/InputLoginComponent";
 import AlertComponent from "../../AlertComponent/AlertComponent";
 
+import * as Styled from "./FormLoginStyled";
+
 function FormLoginComponent() {
-  /*  const users = [
-    {
-      id: 1,
-      email: "email@email.com",
-      password: "asdfg123",
-    },
-  ];*/
+  const service = new ApiService("users");
+  
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmitForm = (data) => {
+  const onSubmitForm = async (data) => {
     const { email, password } = data;
 
-    const user = users.find((u) => u.email === email);
+    let user;
+    await service.Get().then((res) => {
+      user = res.find((u) => u.email === email);
+    });
 
     if (!user) {
-      alert("Usuário não cadastrado");
+      reset();
+      <AlertComponent type={"error"} text="Usuario não cadastrado"/>;
       return;
     }
 
     password === user.password
       ? redirectToHome()
-      : alert("Ops! Usuário e/ou Senha Invalidos.");
+      : <AlertComponent type={"error"} text="Ops! Usuário e/ou Senha Invalidos."/>;
   };
   const navigate = useNavigate();
 
@@ -43,11 +45,11 @@ function FormLoginComponent() {
   };
   return (
     <>
-      <div>
-        <p>ainda não ppssui uma conta? </p>
-        <ModalCriarUsuario />
-      </div>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
+        <div>
+          <span>ainda não possui uma conta? </span>
+          <ModalCriarUsuario />
+        </div>
         <Styled.Header>
           <Styled.Title>LOGIN</Styled.Title>
           <Styled.subtitle>
@@ -59,7 +61,7 @@ function FormLoginComponent() {
             type={"email"}
             label={"Email"}
             id={"email"}
-            placeholder={"email@email.com"}
+            placeholder={"Digite seu e-mail"}
             register={{
               ...register("email", {
                 required: true,
@@ -81,11 +83,9 @@ function FormLoginComponent() {
             }}
             error={errors.password}
           />
-          {/* 
-          {errors.password && <span>This field is required</span>} */}
+          <ButtonComponent nome="Acessar" />
+          <AlertComponent type={"error"} text={"Em Construção"}/>
         </Styled.InputGroup>
-        <ButtonComponent nome="Acessar" />
-        <AlertComponent />
       </Styled.Form>
     </>
   );

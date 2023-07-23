@@ -1,14 +1,18 @@
-import FormLoginComponent from '../../components/FormComponent/FormLogin/FormLoginComponent.jsx';
+import FormLoginComponent from "../../components/FormComponent/FormLogin/FormLoginComponent.jsx";
 
-import '../../../public/MedicalLogo.png'
+import './LoginPage.css'
+
 function LoginPage() {
-const img = "../../public/MedicalLogo.png"
-return ( <>
-    <div className='body'> 
-    <img src={img} height={500} /> 
-    <FormLoginComponent/>
-    </div>
-    </> );
+  const img = "../../public/MedicalLogo.png";
+  return (
+    <>
+      <div className="container">
+        <img className="img" src="/MedicalLogo.png" />
+
+        <FormLoginComponent />
+      </div>
+    </>
+  );
 }
 
 export default LoginPage;
