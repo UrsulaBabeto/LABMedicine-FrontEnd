@@ -26,9 +26,7 @@ function CadastroExamePage() {
       <div className="content">
         <NavbarComponent />
         <FormCadastroExame />
-        <div className="button">
-          <ButtonComponent nome={"Salvar"} />
-        </div>
+      
       </div>
     </>
   );

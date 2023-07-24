@@ -29,12 +29,11 @@ function CadastroPacientePage() {
       </div>
       <div className="content">
         <NavbarComponent />
+        
         <FormCadastroPacienteComponent />
       </div>
  
-        <div className="button1">
-          <ButtonComponent nome={"Salvar"} />
-        </div>
+       
     </>
   );
 }

@@ -1,30 +1,33 @@
 import { styled } from "styled-components";
 
 export const Form = styled.form`
-display: flex;
-align-items: center;
-flex-wrap: wrap;
-margin-left: 10px;
+  display: flex;
 
-`
+  flex-direction: column;
+  margin-left: 10px;
+`;
+export const FormGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: inset 0 -2px 0 var(--gray-light);
+  background: transparent;
+  width: 900px;
+  padding: 30px 10px;
+`;
 export const Div = styled.div`
-padding: 0;
-margin: 0;
-width: 100%;
-`
-export const Label = styled.label`
-font-size: var(--fnt-font-heading-4);
-color: var(--green-darker) ;
-`
-export const TextArea = styled.textarea`
-margin: 5px;
-width: 70%;
-`
+  display: flex;
+  gap: 20px;
+  justify-content: space-evenly;
+margin-left: 10px;
+  flex-wrap: wrap;
+`;
+
 export const Buttons = styled.div`
-display:flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-evenly;
-margin: 0;
-padding: 0;
-`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+`;

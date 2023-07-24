@@ -71,11 +71,11 @@ BootstrapDialogTitle.propTypes = {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
           Dados Pessoais
         </BootstrapDialogTitle>
-        <DialogContent dividers>
          <FormCadastroUsuarioComponent/>
+        <DialogContent dividers>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
+          <Button type="submit" autoFocus>
             Salvar
           </Button>
         </DialogActions>

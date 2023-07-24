@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { ApiService } from "../../../service/ApiService/ApiService";
 
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
-import ModalCriarUsuario from "../../ModalCriarUsuario/ModalCriarUsuario";
 import InputLoginComponent from "../../InputComponent/InputLogin/InputLoginComponent";
 import AlertComponent from "../../AlertComponent/AlertComponent";
 
@@ -46,10 +45,7 @@ function FormLoginComponent() {
   return (
     <>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
-        <div>
-          <span>ainda não possui uma conta? </span>
-          <ModalCriarUsuario />
-        </div>
+        
         <Styled.Header>
           <Styled.Title>LOGIN</Styled.Title>
           <Styled.subtitle>

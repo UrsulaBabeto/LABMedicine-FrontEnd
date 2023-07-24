@@ -59,8 +59,8 @@ function NavbarComponent() {
             </div>
           </div>
         ) : (
-          <div >
-            <div  className="logo">
+          <div>
+            <div className="logo">
               <GiDna2 />
             </div>
             <h2>LABMedicine</h2>
@@ -103,6 +103,7 @@ function NavbarComponent() {
                 <BiotechIcon />
               </Link>
             </div>
+          </div>
         )}
         <div className="switchButton">
           <SwitchComponent id="switchButton" defaultChecked color="warning" />
@@ -114,5 +115,4 @@ function NavbarComponent() {
 
 export default NavbarComponent;
 
-/* b. Deverá existir um botão para esconder e mostrar o menu lateral. */
 

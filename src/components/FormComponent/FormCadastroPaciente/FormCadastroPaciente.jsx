@@ -4,15 +4,15 @@ d. Deverá verificar os dados informados antes de cadastrar.
 e. Deverá criar um identificador único para cada paciente cadastrado. */
 import { useForm } from "react-hook-form";
 
-import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 import OptionComponent from "../../OptionComponent/OptionComponent";
 import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
+import InputType from "../../InputComponent/InputType/InputType";
 
 import * as Styled from "./FormCadastroStyled";
+import TextareaComponent from "../../TextareaComponent/TextareaComponent";
+import ButtonComponent from "../../ButtonComponent/ButtonComponent";
 
 function FormCadastroPacienteComponent() {
-  const [showAlert, setShowAlert] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -49,18 +49,12 @@ function FormCadastroPacienteComponent() {
     } = data;
 
     if (!isValid) {
-      reset();
-      return (
-        <AlertComponent
-          type="warning"
-          text="Dados obrigatórios, tente novamente"
-        />
-      );
+      alert("Erro, tente novamente");
     } else {
       try {
         await service.Create(data);
-
-        <AlertComponent type="success" text="Paciente criado com sucesso" />;
+        console.log(JSON.stringify(data));
+        reset();
       } catch (error) {
         console.error(error);
       }
@@ -69,214 +63,239 @@ function FormCadastroPacienteComponent() {
   return (
     <>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
-        <Styled.Div>
-          <h2>Idetificação</h2>
-        </Styled.Div>
-
-        <SimpleInputComponent
-          label="Nome Completo"
-          id="name"
-          type="text"
-          register={{
-            ...register("name", {
-              required: true,
-              minLength: 5,
-              maxLength: 50,
-            }),
-          }}
-          error={errors.name}
-        />
-        <div>
-          <OptionComponent
-            id="Genero"
-            name="Genero"
-            value="Cisgenero"
-            value1="Transgenero"
-            value2="Prefiro não declarar"
-            {...register("Genero", { required: true })}
-          />
-
-          <OptionComponent
-            id="Sexo"
-            name="Sexo"
-            value="Feminino"
-            value1="Masculino"
-            value2="Prefiro não declarar"
-            {...register("Sexo", { required: true })}
-          />
-
-          <SimpleInputComponent
-            label="Data de Nascimento"
-            id="dataNasc"
-            type="date"
-            {...register("dataNasc", { required: true })}
-          />
-        </div>
-        <SimpleInputComponent
-          mask="000.000.000-00"
-          label="CPF"
-          id="cpf"
-          type="text"
-          register={{ ...register("cpf", { required: true }) }}
-          error={errors.cpf}
-        />
-
-        <SimpleInputComponent
-          mask="44.444.444-4"
-          label="RG"
-          id="rg"
-          type="text"
-          register={{ ...register("rg", { required: true, maxLength: 20 }) }}
-          error={errors.rg}
-        />
-
-        <SimpleInputComponent
-          label="Email"
-          id="email"
-          type="email"
-          register={{ ...register("email", { required: true }) }}
-          error={errors.email}
-        />
-        <SimpleInputComponent
-          mask="(99) 9 9999-9999"
-          label="Telefone"
-          id="tel"
-          type="text"
-          register={{ ...register("tel", { required: true }) }}
-          error={errors.tel}
-        />
-        <div>
-          <OptionComponent
-            id="EstadoCivil"
-            name="Estado Civil"
-            value="Solteiro(a)"
-            value1="Casado(a)"
-            value2="Viuvo(a)"
-            value3="Divorciado(a)"
-            register={{ ...register("EstadoCivil", { required: true }) }}
-            error={errors.EstadoCivil}
-          />
-        </div>
-        <SimpleInputComponent
-          label="Naturalidade"
-          id="naturalidade"
-          register={{
-            ...register("naturalidade", {
-              required: true,
-              minLength: 5,
-              maxLength: 50,
-            }),
-          }}
-          error={errors.naturalidade}
-        />
-
-        <Styled.Div>
-          <h2>Dados Medicos</h2>
-        </Styled.Div>
-
-        <Styled.Div>
-          <SimpleInputComponent
-            mask={"(99) 9 9999-9999"}
-            label="Contato de Emergência"
-            id="emergencia"
-            type="text"
-            register={{ ...register("emergencia", { required: true }) }}
-            error={errors.emergencia}
-          />
-        </Styled.Div>
-
-        <Styled.Div>
-          <Styled.Label htmlFor="">Alergias</Styled.Label>
-          <Styled.TextArea
-            id="alergias"
-            cols="30"
-            rows="4"
-            register={{ ...register("alergias") }}
-          />
-        </Styled.Div>
-        <Styled.Div>
-          <Styled.Label htmlFor="">Lista de Cuidados Específicos</Styled.Label>
-          <Styled.TextArea
-            id="cuidados"
-            cols="20"
-            rows="4"
-            register={{ ...register("cuidados") }}
-          />
-        </Styled.Div>
-      </Styled.Form>
-      <Styled.Form>
-        <Styled.Buttons>
+        <Styled.FormGroup>
           <div>
             <SecondaryButtonComponent nome="Editar" />
           </div>
           <div>
             <SecondaryButtonComponent nome="Deletar" />
           </div>
-        </Styled.Buttons>
-        <Styled.Div>
+        </Styled.FormGroup>
+        <Styled.FormGroup>
+          <h2>Idetificação</h2>
+
+          <Styled.Div>
+            <InputType
+              id="name"
+              label="Nome Completo"
+              type="name"
+              register={{
+                ...register("name", {
+                  required: true,
+                  minLength: 5,
+                  maxLength: 50,
+                }),
+              }}
+            />
+
+            <OptionComponent
+              id="Genero"
+              name="Genero"
+              value="Cisgenero"
+              value1="Transgenero"
+              value2="Prefiro não declarar"
+              {...register("Genero", { required: true })}
+            />
+
+            <OptionComponent
+              id="Sexo"
+              name="Sexo"
+              value="Feminino"
+              value1="Masculino"
+              value2="Prefiro não declarar"
+              {...register("Sexo", { required: true })}
+            />
+
+            <InputType
+              id="dataNasc"
+              type="date"
+              register={{
+                ...register("dataNasc", { required: true }),
+              }}
+            />
+            <InputType
+              mask="000.000.000-00"
+              label="CPF"
+              id="cpf"
+              type="text"
+              register={{
+                ...register("cpf", { required: true }),
+              }}
+            />
+
+            <InputType
+              label="Email"
+              id="email"
+              type="email"
+              register={{
+                ...register("email", { required: true }),
+              }}
+            />
+
+            <InputType
+              mask="(99) 9 9999-9999"
+              label="Telefone"
+              id="tel"
+              type="text"
+              register={{
+                ...register("tel", { required: true }),
+              }}
+            />
+
+            <OptionComponent
+              id="EstadoCivil"
+              name="Estado Civil"
+              value="Solteiro(a)"
+              value1="Casado(a)"
+              value2="Viuvo(a)"
+              value3="Divorciado(a)"
+              register={{ ...register("EstadoCivil", { required: true }) }}
+              error={errors.EstadoCivil}
+            />
+
+            <InputType
+              label="Naturalidade"
+              id="naturalidade"
+              type="text"
+              register={{
+                ...register("naturalidade", {
+                  required: true,
+                  minLength: 5,
+                  maxLength: 50,
+                }),
+              }}
+            />
+          </Styled.Div>
+        </Styled.FormGroup>
+
+        <Styled.FormGroup>
+          <h2>Dados Medicos</h2>
+          <Styled.Div>
+            <InputType
+              mask="(99) 9 9999-9999"
+              label="Contato de Emergência"
+              id="emergencia"
+              type="text"
+              register={{
+                ...register("emergencia", { required: true }),
+              }}
+            />
+
+            <TextareaComponent
+              placeholder={"Alergias"}
+              id="cuidados"
+              register={{ ...register("alergias") }}
+            />
+
+            <TextareaComponent
+              placeholder={"Lista de Cuidados Específicos"}
+              id="cuidados"
+              register={{ ...register("cuidados") }}
+            />
+          </Styled.Div>
+        </Styled.FormGroup>
+
+        <Styled.FormGroup>
           <h2>Convenio</h2>
-        </Styled.Div>
-
-        <SimpleInputComponent
-          label="Convenio"
-          id="convenio"
-          register={{ ...register("convenio") }}
-        />
-        <SimpleInputComponent
-          label="Nº Convenio"
-          id="numConvenio"
-          register={{ ...register("numConvenio") }}
-        />
-        <SimpleInputComponent
-          label="Validade Convenio"
-          id="valConvenio"
-          register={{ ...register("valConvenio") }}
-        />
-
-        <Styled.Div>
+          <Styled.Div>
+            <InputType
+              label="Convenio"
+              id="convenio"
+              type="text"
+              register={{
+                ...register("convenio"),
+              }}
+            />
+            <InputType
+              label="Nº Convenio"
+              id="numConvenio"
+              type="text"
+              register={{
+                ...register("numConvenio"),
+              }}
+            />
+            <InputType
+              label="Validade Convenio"
+              id="valConvenio"
+              type="text"
+              register={{
+                ...register("valConvenio"),
+              }}
+            />
+          </Styled.Div>
+        </Styled.FormGroup>
+        <Styled.FormGroup>
           <h2>Endereço</h2>
+          <Styled.Div>
+            <InputType
+              label="cep"
+              id="cep"
+              type="text"
+              register={{
+                ...register("cep"),
+              }}
+            />
+            <InputType
+              label="Cidade"
+              id="cidade"
+              type="text"
+              register={{
+                ...register("cidade"),
+              }}
+            />
+            <InputType
+              label="Estado"
+              id="estado"
+              type="text"
+              register={{
+                ...register("estado"),
+              }}
+            />
+            <InputType
+              label="Logradouro"
+              id="logradouro"
+              type="text"
+              register={{
+                ...register("logradouro"),
+              }}
+            />
+            <InputType
+              label="Número"
+              id="numero"
+              type="text"
+              register={{
+                ...register("numero"),
+              }}
+            />
+            <InputType
+              label="Complemento"
+              id="complemento"
+              type="text"
+              register={{
+                ...register("complemento"),
+              }}
+            />
+            <InputType
+              label="Bairro"
+              id="bairro"
+              type="text"
+              register={{
+                ...register("bairro"),
+              }}
+            />
+            <InputType
+              label="Ponto de Referência"
+              id="referencia"
+              type="text"
+              register={{
+                ...register("referencia"),
+              }}
+            />
+          </Styled.Div>
+        </Styled.FormGroup>
+        <Styled.Div>
+          <ButtonComponent type="submit" nome={"Salvar"} />
         </Styled.Div>
-
-        <SimpleInputComponent
-          label="cep"
-          id="cep"
-          register={{ ...register("cep") }}
-        />
-        <SimpleInputComponent
-          label="Cidade"
-          id="cidade"
-          register={{ ...register("cidade") }}
-        />
-        <SimpleInputComponent
-          label="Estado"
-          id="estado"
-          register={{ ...register("estado") }}
-        />
-        <SimpleInputComponent
-          label="Logradouro"
-          id="logradouro"
-          register={{ ...register("logradouro") }}
-        />
-        <SimpleInputComponent
-          label="Número"
-          id="numero"
-          register={{ ...register("numero") }}
-        />
-        <SimpleInputComponent
-          label="Complemento"
-          id="complemento"
-          register={{ ...register("complemento") }}
-        />
-        <SimpleInputComponent
-          label="Bairro"
-          id="bairro"
-          register={{ ...register("bairro") }}
-        />
-        <SimpleInputComponent
-          label="Ponto de Referência"
-          id="referencia"
-          register={{ ...register("referencia") }}
-        />
       </Styled.Form>
     </>
   );

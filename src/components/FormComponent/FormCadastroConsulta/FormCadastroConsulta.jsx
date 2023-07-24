@@ -7,6 +7,8 @@ import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonCompo
 
 import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
+import TextareaComponent from "../../TextareaComponent/TextareaComponent";
+import InputType from "../../InputComponent/InputType/InputType";
 
 function FormCadastroConsulta() {
   const [showAlert, setShowAlert] = useState(false);
@@ -23,17 +25,10 @@ function FormCadastroConsulta() {
 
     if (!isValid) {
       reset();
-      return (
-        <AlertComponent
-          type="warning"
-          text="Dados obrigatórios, tente novamente"
-        />
-      );
+      return alert("Dados obrigatórios, tente novamente");
     } else {
       try {
         await service.Create(data);
-
-        <AlertComponent type="success" text="Consulta criada com sucesso" />;
       } catch (error) {
         console.error("erro");
       }
@@ -49,78 +44,76 @@ await service.Get().then((res) => {
  */
   return (
     <>
-      {showAlert && (
-        <AlertComponent type={"error"} text="Documento não encontrado" />
-      )}
-
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
-        <Styled.Buttons>
-          <div>
-            <SecondaryButtonComponent nome="Editar" />
-          </div>
-          <div>
-            <SecondaryButtonComponent nome="Deletar" />
-          </div>
-        </Styled.Buttons>
-        <SimpleInputComponent
-          label="Motivo da consulta:"
-          id="motivo"
-          type="text"
-          register={{
-            ...register("motivo", {
-              required: true,
-              minLength: 6,
-              maxLength: 60,
-            }),
-          }}
-          error={errors.motivo}
-        />
+        <Styled.FormGroup>
+          <Styled.Div>
+            <div>
+              <SecondaryButtonComponent nome="Editar" />
+            </div>
+            <div>
+              <SecondaryButtonComponent nome="Deletar" />
+            </div>
+          </Styled.Div>
+        </Styled.FormGroup>
+        <Styled.FormGroup>
+          <h2>Dados</h2>
+          <Styled.Div>
+            <InputType
+              label="Motivo da consulta:"
+              id="motivo"
+              type="text"
+              register={{
+                ...register("motivo", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 60,
+                }),
+              }}
+            />
 
-        <Styled.Div>
-          <Styled.Label htmlFor="">Decrição do Problema</Styled.Label>
-          <Styled.TextArea
-            id="descricao"
-            cols="90"
-            rows="4"
-            register={{
-              ...register("descricao", {
-                required: true,
-                minLength: 15,
-                maxLength: 1000,
-              }),
-            }}
-            error={errors.descricao}
-          />
-        </Styled.Div>
-        <SimpleInputComponent
-          label="Medicação Receitada:"
-          id="medicacao"
-          type="text"
-          register={{
-            ...register("medicacao", { minLength: 8 }),
-          }}
-        />
-        <Styled.Div>
-          <Styled.Label htmlFor="">Dosagens e Precauções</Styled.Label>
-          <Styled.TextArea
-         
-            id="dose"
-            cols="90"
-            rows="4"
-            register={{
-              ...register("dose", {
-                required: true,
-                minLength: 15,
-                maxLength: 250,
-              }),
-            }}
-            error={errors.dose}
-          />
-        </Styled.Div>
-        <DateTime />
-        <div className="button">
-          <ButtonComponent type="submit" nome={"Salvar"} />
-        </div>
+            <Styled.Div>
+              <TextareaComponent
+                placeholder={"Decrição do Problema"}
+                id="descricao"
+                register={{
+                  ...register("descricao", {
+                    required: true,
+                    minLength: 15,
+                    maxLength: 1000,
+                  }),
+                }}
+              />
+            </Styled.Div>
+            <InputType
+              label="Medicação Receitada:"
+              id="medicacao"
+              type="text"
+              register={{
+                ...register("medicacao", { minLength: 8 }),
+              }}
+            />
+
+            <Styled.Div>
+              <TextareaComponent
+                placeholder={"Dosagens e Precauções"}
+                id="dose"
+                register={{
+                  ...register("dose", {
+                    required: true,
+                    minLength: 15,
+                    maxLength: 250,
+                  }),
+                }}
+              />
+            </Styled.Div>
+            <DateTime />
+          </Styled.Div>
+        </Styled.FormGroup>
+       
+          <Styled.Div>
+            <ButtonComponent type="submit" nome={"Salvar"} />
+          </Styled.Div>
+       
       </Styled.Form>
     </>
   );

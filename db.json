@@ -9,9 +9,21 @@
       "id": 2,
       "email": "email@email.com",
       "password": "12345678"
+    },
+    {
+      "email": "fedfsdfsd@gsdgsd.com",
+      "name": "urusala",
+      "password": "12345678",
+      "id": 3
+    },
+    {
+      "email": "fsdafas@fsdfsd.com",
+      "name": "fsdafassdasd",
+      "password": "sdfsdfsdfsdfsdfsd",
+      "id": 4
     }
   ],
-  "newUser":[],
+  "newUser": [],
   "pacientes": [],
   "consultas": [],
   "exames": []
