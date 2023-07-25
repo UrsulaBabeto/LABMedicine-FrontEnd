@@ -4,23 +4,29 @@ import FormLoginComponent from "../../components/FormComponent/FormLogin/FormLog
 import FormCadastroUsuarioComponent from "../../components/FormComponent/FormCadastroUsuario/FormCadastroUsuarioComponent.jsx";
 
 import './LoginPage.css'
+import { Input } from "../../components/InputComponent/InputLogin/InputLoginStyle.js";
 
 function LoginPage() {
  const [isLogin, setIsLogin] = useState(true);
   return (
     <>
-      <div className="container">
-      <div>
-         {isLogin? <span>ainda não possui uma conta? </span>:""}
+      <div className="containerLogin">
+        <div  className="containerLogin">
+        {isLogin? <img className="imgLogin" src="/MedicalLogo.png" />:<img className="imgLogin" src="/cadastroPage.jpg" />}      
+        </div>
+   
+      <div className="container1Login">
+        <div className="criarLogin">
+         {isLogin? <span>ainda não possui uma conta? </span>:<h2>Cadastrar</h2>}
          {isLogin? <Button type="submit" onClick={()=>{setIsLogin(!isLogin)}}>
             Criar
           </Button>:<Button type="submit" onClick={()=>{setIsLogin(!isLogin)}}>
             Voltar
           </Button>}
-        </div>
-        {isLogin? <img className="img" src="/MedicalLogo.png" />:<img className="img" src="/" />}      
+          </div>
         {isLogin? <FormLoginComponent />:<FormCadastroUsuarioComponent/>}
-       
+        </div>
+     
         
       </div>
     </>

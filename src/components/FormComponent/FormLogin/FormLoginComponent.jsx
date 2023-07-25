@@ -28,14 +28,13 @@ function FormLoginComponent() {
     });
 
     if (!user) {
-      reset();
-      <AlertComponent type={"error"} text="Usuario não cadastrado"/>;
+      alert('Usuario não cadastrado');
       return;
     }
 
     password === user.password
       ? redirectToHome()
-      : <AlertComponent type={"error"} text="Ops! Usuário e/ou Senha Invalidos."/>;
+      :alert('Usuario ou senha inválidos');
   };
   const navigate = useNavigate();
 
@@ -79,7 +78,7 @@ function FormLoginComponent() {
             }}
             error={errors.password}
           />
-          <ButtonComponent nome="Acessar" />
+          <ButtonComponent type="submit" nome="Acessar" />
           <AlertComponent type={"error"} text={"Em Construção"}/>
         </Styled.InputGroup>
       </Styled.Form>

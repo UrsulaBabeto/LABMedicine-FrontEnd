@@ -17,7 +17,7 @@ function NavbarComponent() {
   const handleNavbarComponent = () => {
     setNavbarComponent(!showNavbarComponent);
   };
-  const sectionWidth = showNavbarComponent ? "15%" : "35%";
+  const sectionWidth = showNavbarComponent ? "200px" : "600px";
 
   return (
     <>
@@ -29,34 +29,58 @@ function NavbarComponent() {
             </div>
             <h1>LABMedicine</h1>
             <p>GERAL</p>
-            <div className="icons">
-              <HomeIcon />
-              <Link to="/home">Inicio</Link>
-            </div>
-            <div className="icons">
-              <LogoutIcon />
-              <Link to="/">Sair</Link>
-            </div>
+
+            <Link to="/home">
+              {" "}
+              <div className="icons">
+                <HomeIcon />
+                Inicio{" "}
+              </div>
+            </Link>
+
+            <Link to="/">
+              {" "}
+              <div className="icons">
+                <LogoutIcon />
+                Sair{" "}
+              </div>
+            </Link>
 
             <p>PACIENTES</p>
-            <div className="icons">
-              <PersonAddAltIcon />
-              <Link to="/cadastro-paciente">Cadastrar</Link>
-            </div>
-            <div className="icons">
-              <FormatListBulletedIcon />
-              <Link to="/prontuario">Listar Prontuario</Link>
-            </div>
+
+            <Link to="/cadastro-paciente">
+              {" "}
+              <div className="icons">
+                <PersonAddAltIcon />
+                Cadastrar{" "}
+              </div>
+            </Link>
+
+            <Link to="/prontuario">
+              {" "}
+              <div className="icons">
+                <FormatListBulletedIcon />
+                Listar Prontuario
+              </div>
+            </Link>
 
             <p>EXAMES</p>
-            <div className="icons">
-              <CalendarMonthIcon />
-              <Link to="/cadastro-consulta">Cadastrar Consulta</Link>
-            </div>
-            <div className="icons">
-              <BiotechIcon />
-              <Link to="/cadastro-exame">Cadastrar Exame</Link>
-            </div>
+
+            <Link to="/cadastro-consulta">
+              {" "}
+              <div className="icons">
+                <CalendarMonthIcon />
+                Cadastrar Consulta
+              </div>
+            </Link>
+
+            <Link to="/cadastro-exame">
+              {" "}
+              <div className="icons">
+                <BiotechIcon />
+                Cadastrar Exame{" "}
+              </div>
+            </Link>
           </div>
         ) : (
           <div>
@@ -114,5 +138,3 @@ function NavbarComponent() {
 }
 
 export default NavbarComponent;
-
-

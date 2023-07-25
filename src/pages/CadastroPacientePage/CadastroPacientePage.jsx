@@ -28,7 +28,10 @@ function CadastroPacientePage() {
         />
       </div>
       <div className="content">
+        <div>
         <NavbarComponent />
+        </div>
+             
         
         <FormCadastroPacienteComponent />
       </div>

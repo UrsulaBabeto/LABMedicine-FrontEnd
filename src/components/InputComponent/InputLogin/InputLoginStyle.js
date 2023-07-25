@@ -10,7 +10,7 @@ position: relative;
 `;
 
 export const Input = styled.input`
-
+width: 80%;
   outline: none;
   border: none;
   padding: 5px 40px 5px 2px;
@@ -40,7 +40,7 @@ export const Input = styled.input`
 export const Icon = styled.span`
   position: absolute;
   bottom: 2rem;
-  right: 2rem;
+  right: 3rem;
   background: transparent;
   display: flex;
   font-size: var(--fnt-font-heading-5);

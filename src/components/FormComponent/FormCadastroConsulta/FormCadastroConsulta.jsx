@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
-import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 import DateTime from "../../DatePickerComponent/DatePickerComponent";
 import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
 
@@ -9,6 +8,7 @@ import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
 import TextareaComponent from "../../TextareaComponent/TextareaComponent";
 import InputType from "../../InputComponent/InputType/InputType";
+import SearchComponent from "../../SearchComponent/SearchComponent";
 
 function FormCadastroConsulta() {
   const [showAlert, setShowAlert] = useState(false);
@@ -22,38 +22,58 @@ function FormCadastroConsulta() {
 
   const onSubmitForm = async (data) => {
     const { motivo, descricao, medicacao, dose } = data;
-
+ 
     if (!isValid) {
       reset();
       return alert("Dados obrigatórios, tente novamente");
     } else {
       try {
         await service.Create(data);
+        return alert("Consulta cadastrada com sucesso");
       } catch (error) {
         console.error("erro");
       }
     }
   };
 
-  /* let idPatient;
-await service.Get().then((res) => {
-  idPatient = res.find((u) => u.id === id);
-});
-!idPatient ? setShowAlert(true) : console.log(idPatient);
-};
- */
+  const handleEdit = async (id, data) => {
+    try {
+      await service.Update(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await service.Delete(id).then((res) => {
+        user = res.find((u) => u.id === id);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
-      <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
+      <Styled.Form  noValidate  onSubmit={handleSubmit(onSubmitForm)}>
+        <div>
+        <SearchComponent />
+        </div>
         <Styled.FormGroup>
-          <Styled.Div>
-            <div>
-              <SecondaryButtonComponent nome="Editar" />
-            </div>
-            <div>
-              <SecondaryButtonComponent nome="Deletar" />
-            </div>
-          </Styled.Div>
+          <div>
+            <SecondaryButtonComponent
+              nome="Editar"
+              type="submit"
+              onclick={handleEdit}
+            />
+          </div>
+          <div>
+            <SecondaryButtonComponent
+              nome="Deletar"
+              type="submit"
+              onclick={handleDelete}
+            />
+          </div>
         </Styled.FormGroup>
         <Styled.FormGroup>
           <h2>Dados</h2>
@@ -69,6 +89,7 @@ await service.Get().then((res) => {
                   maxLength: 60,
                 }),
               }}
+              errors={error.motivo}
             />
 
             <Styled.Div>
@@ -109,11 +130,10 @@ await service.Get().then((res) => {
             <DateTime />
           </Styled.Div>
         </Styled.FormGroup>
-       
-          <Styled.Div>
-            <ButtonComponent type="submit" nome={"Salvar"} />
-          </Styled.Div>
-       
+
+        <Styled.Div>
+          <ButtonComponent type="submit" nome={"Salvar"} />
+        </Styled.Div>
       </Styled.Form>
     </>
   );

@@ -45,7 +45,7 @@ function FormCadastroUsuario() {
   return (
     <>
   
-      <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
+      <Styled.Form noValidate onSubmit={handleSubmit(onSubmitForm)}>
 
         <InputType  
         id="name"
@@ -53,21 +53,26 @@ function FormCadastroUsuario() {
           type="name"
           register={{
             ...register("name", { required: true, minLength: 5, maxLength: 50}),
-          }}/>
+          }}
+          error={errors.name}
+          />
         <InputType  
         id="email"
           label="Email"
           type="email"
           register={{
             ...register("email", { required: true, minLength: 5, maxLength: 50  }),
-          }}/>
+          }}
+          error={errors.email}/>
         <InputType  
         id="password"
           label="Senha"
           type="password"
           register={{
             ...register("password", { required: true, minLength: 8 }),
-          }}/>
+          }}
+          error={errors.password}
+          />
    
         <ButtonComponent type="submit" nome="Cadastrar" />
       </Styled.Form>

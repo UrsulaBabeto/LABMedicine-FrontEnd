@@ -1,6 +1,7 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+
+import { styled } from "@mui/system";
 
 export default function InputType({
   label,
@@ -11,18 +12,39 @@ export default function InputType({
   error,
   register,
 }) {
+  const teal = {
+    100: "#b2dfdb",
+    200: "#80cbc4",
+    400: "#26a69a",
+    500: "#00796b",
+    600: "#00695c",
+    900: "#004d40",
+  };
+
+  const red = {
+    500: "#FA1212",
+  };
+
+  const StyledInput = styled(TextField)(
+    ({ theme }) => ` 
+    margin:10px;
+    `
+  );
+
   return (
-    
-      <TextField
-        required
-        $color={error && "danger"}
-        {...register}
-        mask={mask && mask}
-        type={type}
-        placeholder={placeholder}
-        id={id}
-        label={label}
-      />
-   
+    <StyledInput
+      required
+      {...register}
+      mask={mask && mask}
+      type={type}
+      placeholder={placeholder}
+      id={id}
+      label={label}
+      error={!!error}
+      helperText={error && error.message}
+      style={{
+        borderColor: error ? red[500] : teal[900],
+      }}
+    />
   );
 }

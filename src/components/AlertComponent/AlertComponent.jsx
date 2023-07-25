@@ -1,8 +1,8 @@
 import * as React from "react";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import SecondaryButtonComponent from "../ButtonComponent/SecondaryButtonComponent";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -25,9 +25,8 @@ export default function AlertComponent({ text,type }) {
 
   return (
     <Stack spacing={8} sx={{ width: "98%" }}>
-      <Button variant="outlined" onClick={handleClick}>
-        Esqueceu a senha clique aqui
-      </Button>
+      <SecondaryButtonComponent  nome=" Esqueceu a senha clique aqui" type="button" onClick={handleClick}/>       
+    
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity={type} sx={{ width: "100%" }}>
           {text}

@@ -32,6 +32,9 @@ function TextareaComponent({
   const StyledTextarea = styled(TextareaAutosize)(
     ({ theme }) => `
     width: 320px;
+    multilined
+    row:4;
+    margin:10px;
     font-family: IBM Plex Sans, sans-serif;
     font-size: 0.875rem;
     font-weight: 400;

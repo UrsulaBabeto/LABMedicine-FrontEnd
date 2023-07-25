@@ -3,21 +3,32 @@ c. Deverá utilizar a API do ViaCEP para buscar os dados de endereço.
 d. Deverá verificar os dados informados antes de cadastrar.
 e. Deverá criar um identificador único para cada paciente cadastrado. */
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { ApiService } from "../../../service/ApiService/ApiService";
+import InputMask from "react-input-mask";
+
 
 import OptionComponent from "../../OptionComponent/OptionComponent";
 import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
 import InputType from "../../InputComponent/InputType/InputType";
-
-import * as Styled from "./FormCadastroStyled";
 import TextareaComponent from "../../TextareaComponent/TextareaComponent";
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
+import SearchComponent from "../../SearchComponent/SearchComponent";
+
+import * as Styled from "./FormCadastroStyled";
 
 function FormCadastroPacienteComponent() {
+  const serviceAPIVIACEP = new ApiService("pacientes");
+  const service = new ApiService("users");
+  const [address, setAddress] = useState({});
+
   const {
     register,
     handleSubmit,
     reset,
+  
     formState: { errors, isValid },
+    setValue,
   } = useForm();
 
   const onSubmitForm = async (data) => {
@@ -54,21 +65,68 @@ function FormCadastroPacienteComponent() {
       try {
         await service.Create(data);
         console.log(JSON.stringify(data));
+        alert("Paciente cadastrado com sucesso");
         reset();
       } catch (error) {
         console.error(error);
       }
     }
   };
+
+  const handleEdit = async (id, data) => {
+    try {
+      await service.Update(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await service.Delete(id).then((res) => {
+        user = res.find((u) => u.id === id);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleAddress = async (cep) => {
+    try {
+      await serviceAPIVIACEP
+        .GetCEP()
+        .then(setAddress(data))
+        .then(
+          setValue("cidade", data.localidade),
+          setValue("estado", data.uf),
+          setValue("logradouro", data.logradouro),
+          setValue("bairro", data.bairro)
+        );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
+        <div>
+         <SearchComponent />
+        </div>
         <Styled.FormGroup>
           <div>
-            <SecondaryButtonComponent nome="Editar" />
+            <SecondaryButtonComponent
+              nome="Editar"
+              type="submit"
+              onclick={handleEdit}
+            />
           </div>
           <div>
-            <SecondaryButtonComponent nome="Deletar" />
+            <SecondaryButtonComponent
+              nome="Deletar"
+              type="submit"
+              onclick={handleDelete}
+            />
           </div>
         </Styled.FormGroup>
         <Styled.FormGroup>
@@ -113,15 +171,16 @@ function FormCadastroPacienteComponent() {
                 ...register("dataNasc", { required: true }),
               }}
             />
-            <InputType
-              mask="000.000.000-00"
-              label="CPF"
-              id="cpf"
-              type="text"
-              register={{
-                ...register("cpf", { required: true }),
-              }}
-            />
+{/* 
+<NumberFormat
+  format="###.###.###-##"
+  customInput={InputType} // Substitua pelo componente que deseja estilizar (por exemplo, InputType)
+  label="CPF"
+  id="cpf"
+  type="text"
+  {...register("cpf", { required: true })}
+/> */}
+         
 
             <InputType
               label="Email"
@@ -133,10 +192,12 @@ function FormCadastroPacienteComponent() {
             />
 
             <InputType
-              mask="(99) 9 9999-9999"
+              mask={/(\d{2})(\d{4,5})(\d{4})/}
               label="Telefone"
               id="tel"
               type="text"
+            
+          
               register={{
                 ...register("tel", { required: true }),
               }}
@@ -232,8 +293,18 @@ function FormCadastroPacienteComponent() {
               id="cep"
               type="text"
               register={{
-                ...register("cep"),
+                ...register("cep", {
+                  required: true,
+                  pattern: {
+                    value: /^\d{5}-?\d{3}$/,
+                  },
+                }),
               }}
+              onChange={(e) => {
+                const cep = e.target.value;
+                handleAddress(cep);
+              }}
+              error={errors?.cep?.message}
             />
             <InputType
               label="Cidade"
@@ -242,6 +313,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("cidade"),
               }}
+              defaultValue={address.cidade}
             />
             <InputType
               label="Estado"
@@ -250,6 +322,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("estado"),
               }}
+              defaultValue={address.estado}
             />
             <InputType
               label="Logradouro"
@@ -258,6 +331,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("logradouro"),
               }}
+              defaultValue={address.logradouro}
             />
             <InputType
               label="Número"
@@ -282,6 +356,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("bairro"),
               }}
+              defaultValue={address.bairro}
             />
             <InputType
               label="Ponto de Referência"

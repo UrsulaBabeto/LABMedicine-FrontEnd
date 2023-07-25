@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
-import SimpleInputComponent from "../../InputComponent/SimpleInput/SimpleInputComponent";
 import DateTime from "../../DatePickerComponent/DatePickerComponent";
 import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
 
@@ -9,6 +8,7 @@ import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 import InputType from "../../InputComponent/InputType/InputType";
 import TextareaComponent from "../../TextareaComponent/TextareaComponent";
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
+import SearchComponent from "../../SearchComponent/SearchComponent";
 
 function FormCadastroExame() {
   const [showAlert, setShowAlert] = useState(false);
@@ -28,22 +28,41 @@ function FormCadastroExame() {
       return alert("Dados obrigatórios, tente novamente");
     } else {
       await service.Create(data);
-      return <AlertComponent type="success" text="Exame criado com sucesso" />;
+      return alert('Exame cadastrado com sucesso');
     }
   };
-  return (
-    <>
-      <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
-        <Styled.FormGroup>
-          <Styled.Div>
+
+  const handleEdit =async(id,data)=>{
+    try {
+       await service.Update(data)
+    } catch (error) {
+      console.error(error);
+    }
+   }
+   
+   const handleDelete =async(id)=>{
+  try {
+    await service.Delete(id).then((res) => {
+      user = res.find((u) => u.id === id);
+    });
+    } catch (error) {
+      console.error(error);
+    }
+   }
+    return (
+      <>
+        <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
+          <div>
+       <SearchComponent/>  
+        </div>
+          <Styled.FormGroup>
             <div>
-              <SecondaryButtonComponent nome="Editar" />
+              <SecondaryButtonComponent nome="Editar" type="submit" onclick={handleEdit} />
             </div>
             <div>
-              <SecondaryButtonComponent nome="Deletar" />
+              <SecondaryButtonComponent nome="Deletar" type="submit" onclick={handleDelete} />
             </div>
-          </Styled.Div>
-        </Styled.FormGroup>
+          </Styled.FormGroup>
         <Styled.FormGroup>
           <h2>Dados</h2>
           <Styled.Div>

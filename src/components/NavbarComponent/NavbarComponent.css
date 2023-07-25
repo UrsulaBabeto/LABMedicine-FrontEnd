@@ -1,12 +1,12 @@
 section {
   background-color: var(--green-darker);
-  width: 40%;
   color: var(--green-lighter);
   text-align: center; 
   margin-top: -15px;
   padding: 20px;
-  margin-left: 5px;
+  margin-left: 10px;
   box-shadow: 2px 2px 4px var(--green-dark);
+  margin-right: 20px;
 }
 .logo {
 align-self: center;
@@ -48,7 +48,6 @@ a:active{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   margin-top: 100px;
   color: var(--gray-lighter);
 }
