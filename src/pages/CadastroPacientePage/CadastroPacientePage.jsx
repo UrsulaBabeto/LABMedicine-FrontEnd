@@ -14,17 +14,14 @@ function CadastroPacientePage() {
   useEffect(() => {
     setToolbar({
       title: "Cadastro de Pacientes",
-      username: "Josué",
-    avatar: "linkfoto"
+      username:"Ursula", 
     });
   }, []);
   return (
     <>
       <div>
         <ToolbarComponent
-          titulo="Cadastro de Paciente"
-          name="Ursula"
-          avatar=""
+          
         />
       </div>
       <div className="content">

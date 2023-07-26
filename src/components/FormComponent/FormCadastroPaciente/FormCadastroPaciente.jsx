@@ -21,43 +21,16 @@ function FormCadastroPacienteComponent() {
   const serviceAPIVIACEP = new ApiService("pacientes");
   const service = new ApiService("users");
   const [address, setAddress] = useState({});
-
+  
   const {
     register,
     handleSubmit,
-    reset,
-  
+    reset,  
     formState: { errors, isValid },
     setValue,
   } = useForm();
 
   const onSubmitForm = async (data) => {
-    const {
-      name,
-      Genero,
-      Sexo,
-      dataNasc,
-      cpf,
-      rg,
-      email,
-      tel,
-      EstadoCivil,
-      naturalidade,
-      emergencia,
-      alergias,
-      cuidados,
-      convenio,
-      numConvenio,
-      valConvenio,
-      cep,
-      cidade,
-      estado,
-      logradouro,
-      numero,
-      complemento,
-      bairro,
-      referencia,
-    } = data;
 
     if (!isValid) {
       alert("Erro, tente novamente");
@@ -109,7 +82,7 @@ function FormCadastroPacienteComponent() {
 
   return (
     <>
-      <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
+      <Styled.Form noValidate onSubmit={handleSubmit(onSubmitForm)}>
         <div>
          <SearchComponent />
         </div>
@@ -144,24 +117,27 @@ function FormCadastroPacienteComponent() {
                   maxLength: 50,
                 }),
               }}
+              error={errors.name}
             />
 
             <OptionComponent
-              id="Genero"
-              name="Genero"
+              id="genero"
+              name="genero"
               value="Cisgenero"
               value1="Transgenero"
               value2="Prefiro não declarar"
-              {...register("Genero", { required: true })}
+              {...register("genero", { required: true })}
+              error={errors.genero}
             />
 
             <OptionComponent
-              id="Sexo"
-              name="Sexo"
+              id="sexo"
+              name="sexo"
               value="Feminino"
               value1="Masculino"
               value2="Prefiro não declarar"
-              {...register("Sexo", { required: true })}
+              {...register("sexo", { required: true })}
+              error={errors.sexo}
             />
 
             <InputType
@@ -170,6 +146,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("dataNasc", { required: true }),
               }}
+              error={errors.dataNasc}
             />
 {/* 
 <NumberFormat
@@ -189,29 +166,29 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("email", { required: true }),
               }}
+              error={errors.email}
             />
 
             <InputType
-              mask={/(\d{2})(\d{4,5})(\d{4})/}
               label="Telefone"
               id="tel"
-              type="text"
-            
+              type="text"           
           
               register={{
                 ...register("tel", { required: true }),
               }}
+              error={errors.tel}
             />
 
             <OptionComponent
-              id="EstadoCivil"
+              id="estadoCivil"
               name="Estado Civil"
               value="Solteiro(a)"
               value1="Casado(a)"
               value2="Viuvo(a)"
               value3="Divorciado(a)"
-              register={{ ...register("EstadoCivil", { required: true }) }}
-              error={errors.EstadoCivil}
+              register={{ ...register("estadoCivil", { required: true }) }}
+              error={errors.estadoCivil}
             />
 
             <InputType
@@ -225,6 +202,7 @@ function FormCadastroPacienteComponent() {
                   maxLength: 50,
                 }),
               }}
+              error={errors.naturalidade}
             />
           </Styled.Div>
         </Styled.FormGroup>
@@ -240,18 +218,21 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("emergencia", { required: true }),
               }}
+              error={errors.emergencia}
             />
 
             <TextareaComponent
               placeholder={"Alergias"}
-              id="cuidados"
+              id="alergias"
               register={{ ...register("alergias") }}
+              error={errors.alergias}
             />
 
             <TextareaComponent
               placeholder={"Lista de Cuidados Específicos"}
               id="cuidados"
               register={{ ...register("cuidados") }}
+              error={errors.cuidados}
             />
           </Styled.Div>
         </Styled.FormGroup>
@@ -266,6 +247,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("convenio"),
               }}
+              error={errors.convenio}
             />
             <InputType
               label="Nº Convenio"
@@ -274,6 +256,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("numConvenio"),
               }}
+              error={errors.numConvenio}
             />
             <InputType
               label="Validade Convenio"
@@ -282,6 +265,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("valConvenio"),
               }}
+              error={errors.valConvenio}
             />
           </Styled.Div>
         </Styled.FormGroup>
@@ -304,7 +288,7 @@ function FormCadastroPacienteComponent() {
                 const cep = e.target.value;
                 handleAddress(cep);
               }}
-              error={errors?.cep?.message}
+              error={errors.cep}
             />
             <InputType
               label="Cidade"
@@ -314,6 +298,7 @@ function FormCadastroPacienteComponent() {
                 ...register("cidade"),
               }}
               defaultValue={address.cidade}
+              error={errors.cidade}
             />
             <InputType
               label="Estado"
@@ -323,6 +308,7 @@ function FormCadastroPacienteComponent() {
                 ...register("estado"),
               }}
               defaultValue={address.estado}
+              error={errors.estado}
             />
             <InputType
               label="Logradouro"
@@ -332,6 +318,7 @@ function FormCadastroPacienteComponent() {
                 ...register("logradouro"),
               }}
               defaultValue={address.logradouro}
+              error={errors.logradouro}
             />
             <InputType
               label="Número"
@@ -340,6 +327,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("numero"),
               }}
+              error={errors.numero}
             />
             <InputType
               label="Complemento"
@@ -348,6 +336,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("complemento"),
               }}
+              error={errors.complemento}
             />
             <InputType
               label="Bairro"
@@ -357,6 +346,7 @@ function FormCadastroPacienteComponent() {
                 ...register("bairro"),
               }}
               defaultValue={address.bairro}
+              error={errors.bairro}
             />
             <InputType
               label="Ponto de Referência"
@@ -365,6 +355,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("referencia"),
               }}
+              error={errors.referencia}
             />
           </Styled.Div>
         </Styled.FormGroup>

@@ -9,10 +9,28 @@ import ButtonComponent from "../../ButtonComponent/ButtonComponent";
 import TextareaComponent from "../../TextareaComponent/TextareaComponent";
 import InputType from "../../InputComponent/InputType/InputType";
 import SearchComponent from "../../SearchComponent/SearchComponent";
+import { useLocation } from "react-router-dom";
+import { ApiService } from "../../../service/ApiService/ApiService";
 
 function FormCadastroConsulta() {
   const [showAlert, setShowAlert] = useState(false);
+  const { pathname } = useLocation();
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const path = pathname.split("/");
+    const userId = path(path.length - 1);
+    const asyncFnc = async () => {
+      if (isNaN(Number(userId))) {
+        const service = new ApiService("users");
+        await service.Show(
+          userId.then((response) => {
+            setUser(response);
+          }) 
+        );
+      }
+    };
+  });
   const {
     register,
     handleSubmit,
@@ -22,7 +40,7 @@ function FormCadastroConsulta() {
 
   const onSubmitForm = async (data) => {
     const { motivo, descricao, medicacao, dose } = data;
- 
+
     if (!isValid) {
       reset();
       return alert("Dados obrigatórios, tente novamente");
@@ -44,20 +62,21 @@ function FormCadastroConsulta() {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async () => {
     try {
-      await service.Delete(id).then((res) => {
-        user = res.find((u) => u.id === id);
-      });
+      await service.Delete(user.id);
+      return alert("Consulta deletado com sucesso");
+      setUser();
+      reset()
     } catch (error) {
       console.error(error);
     }
   };
   return (
     <>
-      <Styled.Form  noValidate  onSubmit={handleSubmit(onSubmitForm)}>
+      <Styled.Form noValidate onSubmit={handleSubmit(onSubmitForm)}>
         <div>
-        <SearchComponent />
+          <SearchComponent />
         </div>
         <Styled.FormGroup>
           <div>
@@ -68,11 +87,11 @@ function FormCadastroConsulta() {
             />
           </div>
           <div>
-            <SecondaryButtonComponent
+          {user &&  <SecondaryButtonComponent
               nome="Deletar"
               type="submit"
               onclick={handleDelete}
-            />
+            />}
           </div>
         </Styled.FormGroup>
         <Styled.FormGroup>
@@ -89,7 +108,7 @@ function FormCadastroConsulta() {
                   maxLength: 60,
                 }),
               }}
-              errors={error.motivo}
+              error={errors.motivo}
             />
 
             <Styled.Div>
@@ -103,6 +122,7 @@ function FormCadastroConsulta() {
                     maxLength: 1000,
                   }),
                 }}
+                error={errors.descricao}
               />
             </Styled.Div>
             <InputType
@@ -112,6 +132,7 @@ function FormCadastroConsulta() {
               register={{
                 ...register("medicacao", { minLength: 8 }),
               }}
+              error={errors.medicacao}
             />
 
             <Styled.Div>
@@ -125,6 +146,7 @@ function FormCadastroConsulta() {
                     maxLength: 250,
                   }),
                 }}
+                error={errors.dose}
               />
             </Styled.Div>
             <DateTime />

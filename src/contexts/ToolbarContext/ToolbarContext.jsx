@@ -14,7 +14,7 @@ export function ToolbarProvider ({ children }) {
   const [toolbar, setToolbar] = useState({
     title: "Home Page",
     username: "Josué",
-    avatar: "linkfoto"
+    avatar: "/perfil.jpg"
   });
 
   return(

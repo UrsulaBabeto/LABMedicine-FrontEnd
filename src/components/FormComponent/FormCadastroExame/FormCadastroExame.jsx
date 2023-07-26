@@ -51,7 +51,7 @@ function FormCadastroExame() {
    }
     return (
       <>
-        <Styled.Form onSubmit={handleSubmit(onSubmitForm)}>
+        <Styled.Form noValidate onSubmit={handleSubmit(onSubmitForm)}>
           <div>
        <SearchComponent/>  
         </div>
@@ -77,6 +77,7 @@ function FormCadastroExame() {
                   maxLength: 50,
                 }),
               }}
+              error={errors.nomeExame}
             />
 
             <InputType
@@ -90,6 +91,7 @@ function FormCadastroExame() {
                   maxLength: 50,
                 }),
               }}
+              error={errors.tipoExame}
             />
             <InputType
               label="Laboratório:"
@@ -102,6 +104,7 @@ function FormCadastroExame() {
                   maxLength: 30,
                 }),
               }}
+              error={errors.lab}
             />
             <InputType
               label="URL Documento:"
@@ -112,6 +115,7 @@ function FormCadastroExame() {
                   minLength: 5,
                 }),
               }}
+              error={errors.url}
             />
 
             <TextareaComponent
@@ -124,6 +128,7 @@ function FormCadastroExame() {
                   maxLength: 1000,
                 }),
               }}
+              error={errors.descricao}
             />
 
             <InputType
@@ -135,6 +140,7 @@ function FormCadastroExame() {
                   minLength: 8,
                 }),
               }}
+              error={errors.medicacao}
             />
 
             <TextareaComponent
@@ -147,6 +153,7 @@ function FormCadastroExame() {
                   maxLength: 250,
                 }),
               }}
+              error={errors.dose}
             />
             <DateTime />
           </Styled.Div>

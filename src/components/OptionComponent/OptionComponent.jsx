@@ -1,36 +1,69 @@
+import * as React from "react";
 
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
- function OptionComponent({ name, value, value1, value2, value3, id }) {
-  const [age, setAge] = React.useState('');
+import { styled } from "@mui/system";
 
+function OptionComponent({
+  name,
+  value,
+  value1,
+  value2,
+  value3,
+  id,
+  error,
+  register,
+}) {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
 
-  return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel >{name}</InputLabel>
-        <Select          
+ const teal = {
+    100: "#b2dfdb",
+    200: "#80cbc4",
+    400: "#26a69a",
+    500: "#00796b",
+    600: "#00695c",
+    900: "#004d40",
+  };
+  const red = {
+    500: "#FA1212",
+  };
 
-        
-          label={name}
-          onChange={handleChange}
-        >
-          <MenuItem id={id} value={value}>{value}</MenuItem>
-          <MenuItem id={id} value={value1}>{value1}</MenuItem>
-          <MenuItem id={id} value={value2}>{value2}</MenuItem>
-          <MenuItem id={id} value={value3}>{value3}</MenuItem>
-        
-        </Select>
-      </FormControl>
-    </Box>
+  const StyledSelect = styled(Select)(
+    ({ theme }) => ` 
+    margin:10px;
+    padding:0 50px;
+
+    `
+  );
+
+  return (
+    <>
+      <InputLabel>{name}</InputLabel>
+      <StyledSelect
+        {...register}
+        error={!!error}
+        style={{
+          borderColor: error ? red[500] : teal[900],
+        }}
+      >
+        <MenuItem id={id} value={value}>
+          {value}
+        </MenuItem>
+        <MenuItem id={id} value={value1}>
+          {value1}
+        </MenuItem>
+        <MenuItem id={id} value={value2}>
+          {value2}
+        </MenuItem>
+        <MenuItem id={id} value={value3}>
+          {value3}
+        </MenuItem>
+      </StyledSelect>
+    </>
   );
 }
 export default OptionComponent;
