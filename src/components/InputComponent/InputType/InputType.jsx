@@ -1,6 +1,6 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
-import { InputMask } from "react-input-mask";
+import  InputMask  from "react-input-mask";
 
 import { styled } from "@mui/system";
 
@@ -33,18 +33,18 @@ export default function InputType({
   );
 
   return (
-    <InputMask mask={mask}>
+    <InputMask mask={mask} maskChar=" " disabled={false}  {...register}
+    error={!!error}  > 
       {() => (
         <StyledInput
           required
-          {...register}
-          mask={mask && mask}
+          mask={null}
           type={type}
           placeholder={placeholder}
           id={id}
           label={label}
-          error={!!error}
-          helperText={error && error.message}
+         
+       
           style={{
             borderColor: error ? red[500] : teal[900],
           }}

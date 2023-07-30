@@ -54,24 +54,7 @@ function FormCadastroConsulta() {
     }
   };
 
-  const handleEdit = async (id, data) => {
-    try {
-      await service.Update(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-  const handleDelete = async () => {
-    try {
-      await service.Delete(user.id);
-      return alert("Consulta deletado com sucesso");
-      setUser();
-      reset()
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <>
       <Styled.Form noValidate onSubmit={handleSubmit(onSubmitForm)}>

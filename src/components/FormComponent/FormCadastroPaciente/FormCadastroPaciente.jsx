@@ -7,7 +7,6 @@ import { useState } from "react";
 import { ApiService } from "../../../service/ApiService/ApiService";
 import InputMask from "react-input-mask";
 
-
 import OptionComponent from "../../OptionComponent/OptionComponent";
 import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
 import InputType from "../../InputComponent/InputType/InputType";
@@ -21,17 +20,16 @@ function FormCadastroPacienteComponent() {
   const serviceAPIVIACEP = new ApiService("pacientes");
   const service = new ApiService("users");
   const [address, setAddress] = useState({});
-  
+
   const {
     register,
     handleSubmit,
-    reset,  
+    reset,
     formState: { errors, isValid },
     setValue,
   } = useForm();
 
   const onSubmitForm = async (data) => {
-
     if (!isValid) {
       alert("Erro, tente novamente");
     } else {
@@ -84,7 +82,7 @@ function FormCadastroPacienteComponent() {
     <>
       <Styled.Form noValidate onSubmit={handleSubmit(onSubmitForm)}>
         <div>
-         <SearchComponent />
+          <SearchComponent />
         </div>
         <Styled.FormGroup>
           <div>
@@ -148,16 +146,16 @@ function FormCadastroPacienteComponent() {
               }}
               error={errors.dataNasc}
             />
-{/* 
-<NumberFormat
-  format="###.###.###-##"
-  customInput={InputType} // Substitua pelo componente que deseja estilizar (por exemplo, InputType)
-  label="CPF"
-  id="cpf"
-  type="text"
-  {...register("cpf", { required: true })}
-/> */}
-         
+            <InputType
+              mask={"000.000.000-00"}
+              label="CPF"
+              id="cpf"
+              type="text"
+              register={{
+                ...register("cpf", { required: true }),
+              }}
+              error={errors.cpf}
+            />
 
             <InputType
               label="Email"
@@ -170,10 +168,10 @@ function FormCadastroPacienteComponent() {
             />
 
             <InputType
+            mask={"(00) 0 0000-0000"}
               label="Telefone"
               id="tel"
-              type="text"           
-          
+              type="text"
               register={{
                 ...register("tel", { required: true }),
               }}
@@ -273,6 +271,7 @@ function FormCadastroPacienteComponent() {
           <h2>Endereço</h2>
           <Styled.Div>
             <InputType
+            mask={"00.000-000"}
               label="cep"
               id="cep"
               type="text"
