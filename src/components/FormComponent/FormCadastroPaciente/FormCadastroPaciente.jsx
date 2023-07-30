@@ -13,7 +13,7 @@ import * as Styled from "./FormCadastroStyled";
 import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
 
 function FormCadastroPacienteComponent() {
-  const serviceAPIVIACEP = new ApiService("pacientes");
+  const service = new ApiService("pacientes");
   const [paciente, setPaciente] = useState();
   const [endereco, setEndereco] = useState();
 
