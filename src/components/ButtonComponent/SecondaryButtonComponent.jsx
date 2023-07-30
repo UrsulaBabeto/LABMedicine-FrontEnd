@@ -1,7 +1,9 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import { styled } from "@mui/system";
+import PropTypes from "prop-types";
 
+import Button from "@material-ui/core/Button";
+
+import { styled } from "@mui/system";
 function SecondaryButtonComponent({ nome, type }) {
   const teal = {
     100: "#b2dfdb",
@@ -39,3 +41,8 @@ function SecondaryButtonComponent({ nome, type }) {
   );
 }
 export default SecondaryButtonComponent;
+
+SecondaryButtonComponent.propTypes = {
+  nome: PropTypes.string,
+  type: PropTypes.string,
+};

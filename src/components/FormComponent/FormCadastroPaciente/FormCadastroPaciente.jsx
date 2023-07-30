@@ -1,14 +1,9 @@
-/* 
-c. Deverá utilizar a API do ViaCEP para buscar os dados de endereço.
-d. Deverá verificar os dados informados antes de cadastrar.
-e. Deverá criar um identificador único para cada paciente cadastrado. */
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { ApiService } from "../../../service/ApiService/ApiService";
-import InputMask from "react-input-mask";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import  ApiService  from "../../../service/ApiService/ApiService";
 
 import OptionComponent from "../../OptionComponent/OptionComponent";
-import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
 import InputType from "../../InputComponent/InputType/InputType";
 import TextareaComponent from "../../TextareaComponent/TextareaComponent";
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
@@ -18,55 +13,76 @@ import * as Styled from "./FormCadastroStyled";
 
 function FormCadastroPacienteComponent() {
   const serviceAPIVIACEP = new ApiService("pacientes");
-  const service = new ApiService("users");
-  const [address, setAddress] = useState({});
+  const [paciente, setPaciente] = useState();
+  const [endereco, setEndereco] = useState();
+
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isValid },
-    setValue,
   } = useForm();
 
   const onSubmitForm = async (data) => {
+    console.log(data);
+    paciente ? await edit(data) : await save(data);
+  };
+  const save = async (data) => {
     if (!isValid) {
       alert("Erro, tente novamente");
     } else {
-      try {
-        await service.Create(data);
-        console.log(JSON.stringify(data));
-        alert("Paciente cadastrado com sucesso");
-        reset();
-      } catch (error) {
-        console.error(error);
-      }
+      await service
+        .Create(data)
+        .then((response) =>
+          alert(`Paciente ${response.name} criado com sucesso.`)
+        );
+      reset();
     }
   };
 
-  const handleEdit = async (id, data) => {
-    try {
-      await service.Update(data);
-    } catch (error) {
-      console.error(error);
-    }
+  const edit = async (data) => {
+    const body = {
+      ...paciente,
+      ...data,
+    };
+    await service
+      .Update(paciente.id, data)
+      .then((response) =>
+        alert(`Paciente ${response.name} atualizado com sucesso.`)
+      );
+    reset();
   };
 
-  const handleDelete = async (id) => {
-    try {
-      await service.Delete(id).then((res) => {
-        user = res.find((u) => u.id === id);
+  const { pathname } = useLocation();
+
+/*   let user;
+    await service.Get().then((res) => {
+       user = res.find(() => paciente.id === id); 
+    
+    }); */
+
+  useEffect(() => {
+    const fnc = async () => {
+      await service.Show(id).then((res) => {
+        setPaciente(res);
+        Object.entries(res).map(([key, value]) => {
+          setValue(key, value);
+        });
       });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    };
+  }, []);
+
+  const path = pathname.split("/");
+  const id = path[path.lenght - 1];
+  !isNaN(Number(id)) && fnc();
+
 
   const handleAddress = async (cep) => {
     try {
       await serviceAPIVIACEP
         .GetCEP()
-        .then(setAddress(data))
+        .then(setEndereco(data))
         .then(
           setValue("cidade", data.localidade),
           setValue("estado", data.uf),
@@ -80,27 +96,13 @@ function FormCadastroPacienteComponent() {
 
   return (
     <>
-      <Styled.Form noValidate onSubmit={handleSubmit(onSubmitForm)}>
-        <div>
+    {/*  <div>
           <SearchComponent />
-        </div>
-        <Styled.FormGroup>
-          <div>
-            <SecondaryButtonComponent
-              nome="Editar"
-              type="submit"
-              onclick={handleEdit}
-            />
-          </div>
-          <div>
-            <SecondaryButtonComponent
-              nome="Deletar"
-              type="submit"
-              onclick={handleDelete}
-            />
-          </div>
-        </Styled.FormGroup>
-        <Styled.FormGroup>
+        </div> */}
+       
+      <Styled.Form noValidate onSubmit={handleSubmit(onSubmitForm)}>
+       
+        <Styled.FormG>
           <h2>Idetificação</h2>
 
           <Styled.Div>
@@ -118,15 +120,16 @@ function FormCadastroPacienteComponent() {
               error={errors.name}
             />
 
-            <OptionComponent
-              id="genero"
-              name="genero"
-              value="Cisgenero"
-              value1="Transgenero"
-              value2="Prefiro não declarar"
-              {...register("genero", { required: true })}
-              error={errors.genero}
-            />
+<OptionComponent
+  id="genero"
+  name="genero"
+  value="Cisgenero"
+  value1="Transgenero"
+  value2="Prefiro não declarar"
+  register={register("genero", { })}
+  error={errors.genero}
+/>
+
 
             <OptionComponent
               id="sexo"
@@ -134,7 +137,7 @@ function FormCadastroPacienteComponent() {
               value="Feminino"
               value1="Masculino"
               value2="Prefiro não declarar"
-              {...register("sexo", { required: true })}
+              register={register("sexo", { })}
               error={errors.sexo}
             />
 
@@ -142,7 +145,7 @@ function FormCadastroPacienteComponent() {
               id="dataNasc"
               type="date"
               register={{
-                ...register("dataNasc", { required: true }),
+                ...register("dataNasc"),
               }}
               error={errors.dataNasc}
             />
@@ -185,7 +188,7 @@ function FormCadastroPacienteComponent() {
               value1="Casado(a)"
               value2="Viuvo(a)"
               value3="Divorciado(a)"
-              register={{ ...register("estadoCivil", { required: true }) }}
+              register={{ ...register("estadoCivil") }}
               error={errors.estadoCivil}
             />
 
@@ -203,9 +206,9 @@ function FormCadastroPacienteComponent() {
               error={errors.naturalidade}
             />
           </Styled.Div>
-        </Styled.FormGroup>
+        </Styled.FormG>
 
-        <Styled.FormGroup>
+        <Styled.FormG>
           <h2>Dados Medicos</h2>
           <Styled.Div>
             <InputType
@@ -233,9 +236,9 @@ function FormCadastroPacienteComponent() {
               error={errors.cuidados}
             />
           </Styled.Div>
-        </Styled.FormGroup>
+        </Styled.FormG>
 
-        <Styled.FormGroup>
+        <Styled.FormG>
           <h2>Convenio</h2>
           <Styled.Div>
             <InputType
@@ -266,8 +269,8 @@ function FormCadastroPacienteComponent() {
               error={errors.valConvenio}
             />
           </Styled.Div>
-        </Styled.FormGroup>
-        <Styled.FormGroup>
+        </Styled.FormG>
+        <Styled.FormG>
           <h2>Endereço</h2>
           <Styled.Div>
             <InputType
@@ -296,7 +299,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("cidade"),
               }}
-              defaultValue={address.cidade}
+             
               error={errors.cidade}
             />
             <InputType
@@ -306,7 +309,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("estado"),
               }}
-              defaultValue={address.estado}
+             
               error={errors.estado}
             />
             <InputType
@@ -316,7 +319,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("logradouro"),
               }}
-              defaultValue={address.logradouro}
+             
               error={errors.logradouro}
             />
             <InputType
@@ -344,7 +347,7 @@ function FormCadastroPacienteComponent() {
               register={{
                 ...register("bairro"),
               }}
-              defaultValue={address.bairro}
+            
               error={errors.bairro}
             />
             <InputType
@@ -357,10 +360,13 @@ function FormCadastroPacienteComponent() {
               error={errors.referencia}
             />
           </Styled.Div>
-        </Styled.FormGroup>
+        </Styled.FormG>
         <Styled.Div>
-          <ButtonComponent type="submit" nome={"Salvar"} />
-        </Styled.Div>
+        {paciente ? (
+            <ButtonComponent type="button" nome={"Editar"} onclick={edit} />
+          ) : (
+            <ButtonComponent type="submit" nome={"Salvar"} />
+          )}   </Styled.Div>
       </Styled.Form>
     </>
   );

@@ -1,5 +1,8 @@
 import * as React from "react";
+import PropTypes from "prop-types";
+
 import TextareaAutosize from "@mui/base/TextareaAutosize";
+
 import { styled } from "@mui/system";
 
 function TextareaComponent({
@@ -70,3 +73,9 @@ function TextareaComponent({
 }
 
 export default TextareaComponent;
+
+TextareaComponent.propTypes = {
+  id: PropTypes.string,
+  placeholder: PropTypes.string,
+  register: PropTypes.any,
+};

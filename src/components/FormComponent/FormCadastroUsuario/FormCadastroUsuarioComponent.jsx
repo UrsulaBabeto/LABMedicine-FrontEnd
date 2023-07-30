@@ -9,11 +9,12 @@ e. Deverá criar um identificador único para cada paciente cadastrado.
 f. Deverá apresentar animação ao salvar. */
 
 import { useForm } from "react-hook-form";
-import { ApiService } from "../../../service/ApiService/ApiService";
+import  ApiService  from "../../../service/ApiService/ApiService";
 
-import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 import ButtonComponent from "../../ButtonComponent/ButtonComponent";
 import InputType from "../../InputComponent/InputType/InputType"
+
+import * as Styled from "../FormCadastroPaciente/FormCadastroStyled";
 
 function FormCadastroUsuario() {
   const service = new ApiService("users");
@@ -35,6 +36,7 @@ function FormCadastroUsuario() {
       try {
         await service.Create(data);
         console.log(JSON.stringify(data))
+        alert("Usuario cadastrado com sucesso");
         reset()
       } catch (error) {
         console.error(error);

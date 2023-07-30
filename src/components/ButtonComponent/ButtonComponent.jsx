@@ -1,7 +1,9 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import { styled } from "@mui/system";
+import PropTypes from "prop-types";
 
+import Button from "@material-ui/core/Button";
+
+import { styled } from "@mui/system";
 
 function ButtonComponent({ nome, type }) {
   const teal = {
@@ -43,3 +45,8 @@ function ButtonComponent({ nome, type }) {
 }
 
 export default ButtonComponent;
+
+ButtonComponent.propTypes = {
+  nome: PropTypes.string,
+  type: PropTypes.string,
+};

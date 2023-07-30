@@ -1,9 +1,13 @@
 import * as React from "react";
+import PropTypes from "prop-types";
+
+import ApiService  from "../../../service/ApiService/ApiService";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { ApiService } from "../../../service/ApiService/ApiService";
+
 
 function CardStatistic({ icon, title, value, table }) {
   const service = new ApiService(table);
@@ -35,3 +39,10 @@ function CardStatistic({ icon, title, value, table }) {
   );
 }
 export default CardStatistic;
+
+CardStatistic.propTypes = { 
+  icon: PropTypes.any,
+  title: PropTypes.string,
+  value: PropTypes.string,
+  table: PropTypes.string,
+};

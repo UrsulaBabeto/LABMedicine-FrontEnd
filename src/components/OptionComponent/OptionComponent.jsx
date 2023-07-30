@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -67,3 +68,15 @@ function OptionComponent({
   );
 }
 export default OptionComponent;
+
+OptionComponent.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
+  value1: PropTypes.string,
+  value2: PropTypes.string,
+  value3: PropTypes.string,
+  id: PropTypes.string,
+  error: PropTypes.any,
+  register: PropTypes.any,
+  };
+

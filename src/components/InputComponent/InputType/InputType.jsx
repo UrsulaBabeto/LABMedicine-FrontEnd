@@ -1,6 +1,8 @@
 import * as React from "react";
+import PropTypes from "prop-types";
+
 import TextField from "@mui/material/TextField";
-import  InputMask  from "react-input-mask";
+
 
 import { styled } from "@mui/system";
 
@@ -11,7 +13,7 @@ export default function InputType({
   placeholder,
   mask,
   error,
-  register,
+  register
 }) {
   const teal = {
     100: "#b2dfdb",
@@ -33,9 +35,7 @@ export default function InputType({
   );
 
   return (
-    <InputMask mask={mask} maskChar=" " disabled={false}  {...register}
-    error={!!error}  > 
-      {() => (
+   
         <StyledInput
           required
           mask={null}
@@ -43,13 +43,22 @@ export default function InputType({
           placeholder={placeholder}
           id={id}
           label={label}
-         
+          {...register}
        
           style={{
             borderColor: error ? red[500] : teal[900],
           }}
         />
       )}
-    </InputMask>
-  );
-}
+
+      InputType.propTypes = {
+        label: PropTypes.string,
+        id: PropTypes.string,
+        type: PropTypes.string,
+        placeholder: PropTypes.string,
+        error: PropTypes.any,
+        register: PropTypes.any,
+      };
+      
+
+      

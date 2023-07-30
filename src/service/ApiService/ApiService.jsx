@@ -1,6 +1,6 @@
 const BASE_URL = "http://localhost:3000/RESOURCE";
 
-export class ApiService {
+ export default class ApiService {
   apiUrl;
   headers = {
     "Content-type": "application/JSON",

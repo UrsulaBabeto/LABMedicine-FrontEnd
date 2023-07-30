@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+
 import SwitchComponent from "../SwitchComponent/SwitchComponent";
 import { GiDna2 } from "react-icons/gi";
 import HomeIcon from "@mui/icons-material/Home";

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import * as Styled from "./InputLoginStyle";
 
@@ -39,3 +41,12 @@ function InputLoginComponent({ label, id, type, placeholder, register, error }) 
   
 
   export default InputLoginComponent;
+
+  InputLoginComponent.propTypes = {
+  label: PropTypes.string,
+  id: PropTypes.string,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  error: PropTypes.any,
+  register: PropTypes.any,
+};
