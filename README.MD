@@ -1,10 +1,9 @@
 # LABMedicine - Interface para Clinicas Médicas 
 
-> Interface criada com funcionalidades básicas  
-> e essenciais para a conexão com o api de
-> o gerenciamento e automação nos atendimentos 
-> de algumas entidades relacionais do setor 
+> Interface criada com funcionalidades básicas e essenciais para a conexão com o api de
+> o gerenciamento e automação nos atendimentos de algumas entidades relacionais do setor 
 > clínico - pacientes, enfermeiros e médicos.
+
 > Projeto criado com React em fase de desenvolvimento
 
 
