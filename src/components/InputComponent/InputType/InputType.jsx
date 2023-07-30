@@ -29,10 +29,11 @@ export default function InputType({
   };
 
   const StyledInput = styled(TextField)(
-    ({ theme }) => ` 
-    margin:10px;
-    `
-  );
+    ({ theme, error }) => ` 
+    margin: 10px;
+    border-color: ${error ? "#FA1212" : teal[900]};
+  `
+);
 
   return (
    
@@ -43,11 +44,8 @@ export default function InputType({
           placeholder={placeholder}
           id={id}
           label={label}
-          {...register}
-       
-          style={{
-            borderColor: error ? red[500] : teal[900],
-          }}
+          {...register}       
+          error={error}
         />
       )}
 
@@ -60,5 +58,4 @@ export default function InputType({
         register: PropTypes.any,
       };
       
-
-      
+      /* register, error */

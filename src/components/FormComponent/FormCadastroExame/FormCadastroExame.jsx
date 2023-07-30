@@ -67,7 +67,7 @@ function FormCadastroExame() {
   useEffect(() => {
     const fnc = async () => {
       await service.Show(id).then((res) => {
-        setConsulta(res);
+        setExame(res);
         Object.entries(res).map(([key, value]) => {
           setValue(key, value);
         });
@@ -193,6 +193,7 @@ function FormCadastroExame() {
                 nome="Deletar"
                 type="button"
                 onclick={del}
+                disabled={!exame}
               />
             </div>
           </Styled.Div>

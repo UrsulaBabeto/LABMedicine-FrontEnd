@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 
 import * as React from 'react';
 import AlertComponent from '../../AlertComponent/AlertComponent';
+import ApiService from '../../../service/ApiService/ApiService';
 
 const bull = (
   <Box
@@ -45,7 +46,7 @@ const card = (
 );
  function CardPacienteComponent() {
   const service = new ApiService('pacientes');
-  const [currValue, setCurrValue] = React.useState(value);
+  const [currValue, setCurrValue] = React.useState();
 
   React.useEffect(() => {
     const fnc = async () => {

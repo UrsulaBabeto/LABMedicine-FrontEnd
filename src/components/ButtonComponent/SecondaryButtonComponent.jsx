@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 
 import { styled } from "@mui/system";
-function SecondaryButtonComponent({ nome, type }) {
+function SecondaryButtonComponent({ nome, type,disabled }) {
   const teal = {
     100: "#b2dfdb",
     200: "#80cbc4",
@@ -35,7 +35,7 @@ function SecondaryButtonComponent({ nome, type }) {
   );
 
   return (
-    <StyledButton variant="outlined" type={type}>
+    <StyledButton variant="outlined" type={type} disabled={disabled}>
       {nome}
     </StyledButton>
   );
@@ -45,4 +45,5 @@ export default SecondaryButtonComponent;
 SecondaryButtonComponent.propTypes = {
   nome: PropTypes.string,
   type: PropTypes.string,
+  disabled: PropTypes.any,
 };

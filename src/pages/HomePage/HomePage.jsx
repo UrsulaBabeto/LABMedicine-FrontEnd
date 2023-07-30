@@ -22,9 +22,10 @@ function HomePage() {
       <header>
         <ToolbarComponent />
       </header>
-      <div style={{ display: "flex" }}>
+     <div>
+       <div style={{ display: "flex" }}>
         <NavbarComponent />
-        <h3>Estatisticas do Sistema</h3>
+       <div> <h3>Estatisticas do Sistema</h3></div>
         {StatisticUtils.arrStatistic.map((s) => (
           <CardStatistic
             icon={s.icon}
@@ -40,6 +41,7 @@ function HomePage() {
         </div>
       </div>
       <div><CardPacienteComponent/></div>
+     </div>
     </>
   );
 }

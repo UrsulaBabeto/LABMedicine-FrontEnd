@@ -54,6 +54,15 @@ function FormCadastroPacienteComponent() {
     reset();
   };
 
+  /*   const del = async (data) => {
+    await service
+      .Delete(exame.id, data)
+      .then((response) =>
+        alert(`Exame ${response.nomeExame} excluido com sucesso.`)
+      );
+    reset();
+  }; */
+
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -71,7 +80,7 @@ function FormCadastroPacienteComponent() {
     !isNaN(Number(id)) && fnc();
   }, []);
 
-  const handleAddress = async (cep) => {
+/*   const handleAddress = async (cep) => {
     try {
       await serviceAPIVIACEP
         .GetCEP()
@@ -85,7 +94,7 @@ function FormCadastroPacienteComponent() {
     } catch (error) {
       console.error(error);
     }
-  };
+  }; */
 
   return (
     <>
@@ -273,9 +282,6 @@ function FormCadastroPacienteComponent() {
                 register={{
                   ...register("cep", {
                     required: true,
-                    pattern: {
-                      value: /^\d{5}-?\d{3}$/,
-                    },
                   }),
                 }}
                 onChange={(e) => {
@@ -355,13 +361,13 @@ function FormCadastroPacienteComponent() {
             ) : (
               <ButtonComponent type="submit" nome={"Salvar"} />
             )}
-            <div>
+            {/*  <div>
               <SecondaryButtonComponent
                 nome="Deletar"
                 type="button"
                 onclick={del}
-              />
-            </div>{" "}
+              /> 
+            </div>{" "}*/}
           </Styled.Div>
         </Styled.Form>
       </div>
