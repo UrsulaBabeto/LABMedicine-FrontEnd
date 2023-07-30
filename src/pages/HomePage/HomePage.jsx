@@ -4,7 +4,8 @@ import { ToolbarContext } from "../../contexts/ToolbarContext/ToolbarContext";
 import { useContext, useEffect } from "react";
 import CardStatistic from "../../components/cards/CardStatistic/CardStatistic";
 import { StatisticUtils } from "../../Utils/StatisticUtils";
-import SearchComponent from "../../components/SearchComponent/SearchComponent"
+import SearchComponent from "../../components/SearchComponent/SearchComponent";
+import CardPacienteComponent from "../../components/cards/CardPacienteComponent/CardPacienteComponent";
 
 function HomePage() {
   const { setToolbar } = useContext(ToolbarContext);
@@ -23,6 +24,7 @@ function HomePage() {
       </header>
       <div style={{ display: "flex" }}>
         <NavbarComponent />
+        <h3>Estatisticas do Sistema</h3>
         {StatisticUtils.arrStatistic.map((s) => (
           <CardStatistic
             icon={s.icon}
@@ -32,10 +34,12 @@ function HomePage() {
             key={s.id}
           />
         ))}
-        <SearchComponent />
+        <div>
+          <h3>Informaçoes rapidas de Pacientes</h3>
+          <SearchComponent />
+        </div>
       </div>
-      <div>
-      </div>
+      <div><CardPacienteComponent/></div>
     </>
   );
 }
