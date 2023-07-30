@@ -4,7 +4,7 @@
 > o gerenciamento e automação nos atendimentos de algumas entidades relacionais do setor 
 > clínico - pacientes, enfermeiros e médicos.
 
-> Projeto criado com React em fase de desenvolvimento
+> Projeto criado com React [em fase de desenvolvimento]
 
 
 ## Tecnologias

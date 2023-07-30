@@ -23,10 +23,9 @@ function ListaProntuarioPage() {
         <div>
           <NavbarComponent />
         </div>
-<div>
-
-        <ListaProntuarioCompoment />
-</div>
+        <div>
+          <ListaProntuarioCompoment />
+        </div>
       </div>
     </>
   );

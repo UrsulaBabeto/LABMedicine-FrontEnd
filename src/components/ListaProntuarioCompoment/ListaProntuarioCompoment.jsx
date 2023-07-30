@@ -1,39 +1,47 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import ApiService from "../../service/ApiService/ApiService";
 
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
-import IconButton from "@mui/material/IconButton";
 import SearchComponent from "../SearchComponent/SearchComponent";
 
+import "./ListaProntuarioCompoment.css";
 function ListaProntuarioCompoment() {
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const service = new ApiService("pacientes");
+      const data = await service.Get();
+      setData(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <div>
         <h3>Utilize a barra de pesquisa para buscar</h3>
         <SearchComponent />
       </div>
-      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-        {[1, 2, 3].map((value) => (
-          <ListItem
-            key={value}
-            disableGutters
-            secondaryAction={
-              <Link>
-                <IconButton aria-label="redirect">
-                  <DoubleArrowIcon />
-                </IconButton>
+
+      <div>
+        <ul className="listaprontuarioUL">
+          {data.map((user) => (
+            <li className="listaprontuarioLI" key={user.id}>
+              <span> Registro: {user.id} </span>
+              <span> Nome: {user.name}</span>{" "}
+              <span>Convenio: {user.convenio}</span>
+              <Link to={"/lista-prontuario"}>
+                <DoubleArrowIcon />
               </Link>
-            }
-          >
-            <ListItemText primary={`Line item ${value}`} />
-          </ListItem>
-        ))}
-      </List>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
 
 export default ListaProntuarioCompoment;
+
