@@ -107,39 +107,48 @@ export default App;
 _Navbar_
 
 A navbar possibilita o usuário a navegar e sair da aplicação. Também possui a função toggle para minimizar o componente 
+
 ![Navbar-readme](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/f765e7c4-535e-4c1b-984e-ca9ab4e95945)
 
 _Toolbar_
+
 Exibe o titulo da pagina, bem vindas ao usuário e mostra a foto de perfil, quando cadastrada
+
 ![toolbar-readme](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/a9e9a892-1c35-4755-af6a-77054c6dccd1)
 
 _Barra de Busca_
+
 Barra para busca de dados
-![Search-readme](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/cc1678d4-1844-4aea-8676-e4d4f57840d2)
+
+![Search-readme](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/5b648b8d-c113-4af0-aaf9-99ba6fd7cf1e)
 
 _Pagina de Login_
+
 A página de login possui possibilita que o usuário:
 - mostre a senha digitada
 - cadastre um novo usuario
 - entre no sistema 
 - mudança de cor de input para areas obrigatórias
+ 
 ![Loginpage-readme](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/086f3635-b8bb-4734-a646-1f5cc92402e2)
 
 _Paginas de Cadastro_
+
 /*Como todas as paginas de cadastro possuem as mesmas funcionalidades, somente a pagina de exames será exibida como exemplo de funcionalidades
 A pagina possui:
 - validações de erros
 - validação para botões, caso naão exista dados exibidos
 - troca de botões para edição de usuario
 
+![cadastro-readme](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/36d5a404-f2f4-45ab-8974-f55ba09d499e)
+
 _Home_
+
 Em construção
 
 _Prontuarios_
+
 Em construção
-
-![cadastro-readme](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/36d5a404-f2f4-45ab-8974-f55ba09d499e)
-
 
 ## Melhorias:
 - Melhorar a resposividade e CSS em um geral;
