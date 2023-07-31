@@ -6,9 +6,6 @@
 
 > Projeto criado com React [em fase de desenvolvimento]
 
-<div width="60px>
-![trello-color-svgrepo-com (1)](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/2f6fa30d-3495-4e5c-86ed-f1e63b75795a)
-</div>
 <a href="https://trello.com/b/PPDRuB1R/labmedicine" target="_blank">Trello</a> 
 
 
