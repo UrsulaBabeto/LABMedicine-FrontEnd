@@ -11,6 +11,7 @@ import SearchComponent from "../../SearchComponent/SearchComponent";
 
 import * as Styled from "./FormCadastroStyled";
 import SecondaryButtonComponent from "../../ButtonComponent/SecondaryButtonComponent";
+import { ApiGetCEP } from "../../../service/ApiViaCep/ApiViaCep";
 
 function FormCadastroPacienteComponent() {
   const service = new ApiService("pacientes");
@@ -21,6 +22,8 @@ function FormCadastroPacienteComponent() {
     register,
     handleSubmit,
     reset,
+    setValue,
+    getValues,
     formState: { errors, isValid },
   } = useForm();
 
@@ -53,22 +56,16 @@ function FormCadastroPacienteComponent() {
       );
     reset();
   };
-
-  /*   const del = async (data) => {
-    await service
-      .Delete(exame.id, data)
-      .then((response) =>
-        alert(`Exame ${response.nomeExame} excluido com sucesso.`)
-      );
-    reset();
-  }; */
+  const del = async (data) => {
+    await service.Delete(paciente.data);
+  };
 
   const { pathname } = useLocation();
 
   useEffect(() => {
     const fnc = async () => {
       await service.Show(id).then((res) => {
-        setConsulta(res);
+        setPaciente(res);
         Object.entries(res).map(([key, value]) => {
           setValue(key, value);
         });
@@ -80,21 +77,21 @@ function FormCadastroPacienteComponent() {
     !isNaN(Number(id)) && fnc();
   }, []);
 
-/*   const handleAddress = async (cep) => {
+
+  const handleAddress = async () => {
     try {
-      await serviceAPIVIACEP
-        .GetCEP()
-        .then(setEndereco(data))
-        .then(
-          setValue("cidade", data.localidade),
-          setValue("estado", data.uf),
-          setValue("logradouro", data.logradouro),
-          setValue("bairro", data.bairro)
-        );
+      const cep = getValues("cep")
+      const res = await ApiGetCEP(cep)
+      console.log(cep)
+      console.log(res)
+        setEndereco(res);
+        Object.entries(res).map(([key, value]) => {
+          setValue(key, value)
+        })
     } catch (error) {
       console.error(error);
     }
-  }; */
+  };
 
   return (
     <>
@@ -284,10 +281,7 @@ function FormCadastroPacienteComponent() {
                     required: true,
                   }),
                 }}
-                onChange={(e) => {
-                  const cep = e.target.value;
-                  handleAddress(cep);
-                }}
+                onInput={handleAddress}
                 error={errors.cep}
               />
               <InputType
@@ -361,13 +355,14 @@ function FormCadastroPacienteComponent() {
             ) : (
               <ButtonComponent type="submit" nome={"Salvar"} />
             )}
-            {/*  <div>
+            <div>
               <SecondaryButtonComponent
                 nome="Deletar"
                 type="button"
                 onclick={del}
-              /> 
-            </div>{" "}*/}
+                disabled={!paciente}
+              />
+            </div>{" "}
           </Styled.Div>
         </Styled.Form>
       </div>

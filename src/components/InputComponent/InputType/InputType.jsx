@@ -54,7 +54,7 @@ export default function InputType({
         id: PropTypes.string,
         type: PropTypes.string,
         placeholder: PropTypes.string,
-        error: PropTypes.any,
+        error: PropTypes.bool,
         register: PropTypes.any,
       };
       

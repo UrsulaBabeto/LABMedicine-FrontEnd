@@ -53,14 +53,10 @@ function FormCadastroExame() {
       );
     reset();
   };
+
   const del = async (data) => {
-    await service
-      .Delete(exame.id, data)
-      .then((response) =>
-        alert(`Exame ${response.nomeExame} excluido com sucesso.`)
-      );
-    reset();
-  };
+    await service.Delete(exame.data)}
+    
 
   const { pathname } = useLocation();
 

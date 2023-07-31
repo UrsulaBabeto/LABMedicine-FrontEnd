@@ -76,7 +76,7 @@ OptionComponent.propTypes = {
   value2: PropTypes.string,
   value3: PropTypes.string,
   id: PropTypes.string,
-  error: PropTypes.any,
+  error: PropTypes.bool,
   register: PropTypes.any,
   };
 

@@ -63,6 +63,9 @@ function FormCadastroConsulta() {
     console.log(body);
   };
 
+  const del = async (data) => {
+    await service.Delete(consulta.data)}
+
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -160,6 +163,7 @@ function FormCadastroConsulta() {
                 nome="Deletar"
                 type="button"
                 onclick={del}
+                disabled={!consulta}
               />
             </div>
           </Styled.Div>

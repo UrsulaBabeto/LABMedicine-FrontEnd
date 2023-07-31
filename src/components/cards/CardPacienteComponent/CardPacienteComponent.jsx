@@ -13,7 +13,6 @@ function CardPacienteComponent() {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const service = new ApiService("pacientes");
       const data = await service.Get();
       setData(data);
     };

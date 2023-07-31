@@ -47,6 +47,6 @@ function InputLoginComponent({ label, id, type, placeholder, register, error }) 
   id: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
-  error: PropTypes.any,
+  error: PropTypes.bool,
   register: PropTypes.any,
 };
