@@ -143,11 +143,17 @@ A pagina possui:
 
 _Home_
 
-Em construção
+Exibe cards com estatisticas do sistema e cards com dados de pacientes
+
+![home-readme](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/6636f0c5-2ed2-4fb0-8cf9-594333132c32)
 
 _Prontuarios_
 
-Em construção
+/*Em construção
+
+Lista de prontuarios redireciona para detalhes de consultas e exames 
+
+![lista-readme](https://github.com/UrsulaBabeto/LABMedicine-FrontEnd/assets/105758045/bcc37c0d-ed9b-40bb-a6a7-3c29cd327dbf)
 
 ## Melhorias:
 - Melhorar a resposividade e CSS em um geral;

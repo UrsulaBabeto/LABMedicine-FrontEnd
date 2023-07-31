@@ -1,64 +1,40 @@
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import ApiService from "../../../service/ApiService/ApiService";
 
-import * as React from 'react';
-import AlertComponent from '../../AlertComponent/AlertComponent';
-import ApiService from '../../../service/ApiService/ApiService';
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    <Card variant="outlined">
-    <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        NOME DA PESSOA
-      </Typography>
-      <Typography variant="h5" component="div">
-        dados
-      </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        dado1
-      </Typography>
-      <Typography variant="body2">
-       dado2
-        <br />
-        {'"dado3"'}
-      </Typography>
-    </CardContent>
-    
-    <CardActions>
-      <Button size="small"><AlertComponent/></Button>
-    </CardActions>
-    </Card>
-  </Box>
-);
+import "./CardPacienteComponent.css";
 
-const card = (
-  <React.Fragment>
-  
-  </React.Fragment>
-);
- function CardPacienteComponent() {
-  const service = new ApiService('pacientes');
-  const [currValue, setCurrValue] = React.useState();
+function CardPacienteComponent() {
+  const service = new ApiService("pacientes");
+  const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    const fnc = async () => {
-      service.Get().then((res) => {
-        setCurrValue(res.length);
-      });
+    const fetchData = async () => {
+      const service = new ApiService("pacientes");
+      const data = await service.Get();
+      setData(data);
     };
-  });
+    fetchData();
+  }, []);
+
   return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
-    </Box>
+    <div>
+      <ul className="cardPacienteUL">
+        {data.map((user) => (
+          <li className="cardPacienteLI" key={user.id}>
+            <h2 className="cardPacienteH2">{user.name}</h2>
+            <div className="cardPacienteDIV">
+              <Typography>{user.tel}</Typography>
+              <p>{user.convenio}</p>
+              <Link to={"/prontuario-paciente"}>ver mais</Link>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 export default CardPacienteComponent;
